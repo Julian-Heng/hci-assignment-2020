@@ -5,11 +5,7 @@
  */
 package mkvtoolnix.StartMenu;
 
-import java.io.IOException;
-import javafx.fxml.FXMLLoader;
 import javafx.scene.control.ListCell;
-import javafx.scene.layout.AnchorPane;
-import mkvtoolnix.MKVToolNix;
 
 
 /**
@@ -18,12 +14,12 @@ import mkvtoolnix.MKVToolNix;
  */
 public class FileEntryCell extends ListCell<FileEntry>
 {
-    private AnchorPane content;
+    private final FileEntryController fileEntryController;
 
 
     public FileEntryCell()
     {
-        content = new AnchorPane();
+        fileEntryController = new FileEntryController();
     }
 
 
@@ -35,17 +31,9 @@ public class FileEntryCell extends ListCell<FileEntry>
             setGraphic(null);
         else
         {
-            try
-            {
-                AnchorPane cell = FXMLLoader.load(MKVToolNix.class.getResource("StartMenu/FileEntry.fxml"));
-                content.getChildren().clear();
-                content.getChildren().add(cell);
-                setGraphic(content);
-            }
-            catch (IOException e)
-            {
-                setGraphic(null);
-            }
+            fileEntryController.setFileEntry(i);
+            fileEntryController.update();
+            setGraphic(fileEntryController);
         }
     }
 }
