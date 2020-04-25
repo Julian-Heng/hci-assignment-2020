@@ -13,7 +13,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="mkvtoolnix.StartMenu.StartMenuController">
+<AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="MKVToolNix.StartMenu.StartMenuController">
   <children>
     <CheckBox fx:id="chkSkip" layoutX="14.0" layoutY="568.0" mnemonicParsing="false" text="Always select this option" AnchorPane.bottomAnchor="16.0" AnchorPane.leftAnchor="16.0" />
     <ListView fx:id="listRecentFiles" layoutX="1.0" layoutY="54.0" prefHeight="496.0" prefWidth="675.0" AnchorPane.bottomAnchor="50.0" AnchorPane.leftAnchor="16.0" AnchorPane.rightAnchor="309.0" AnchorPane.topAnchor="54.0" />

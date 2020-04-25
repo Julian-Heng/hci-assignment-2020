@@ -5,20 +5,17 @@
  */
 package MKVToolNix.StartMenu;
 
-import java.io.IOException;
+import MKVToolNix.CustomAnchorPane;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Label;
-import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
-import MKVToolNix.MKVToolNix;
 
 
 /**
  *
  * @author student
  */
-public class FileEntryController extends AnchorPane
+public class FileEntryController extends CustomAnchorPane
 {
     @FXML
     private Label txtFileName;
@@ -26,35 +23,22 @@ public class FileEntryController extends AnchorPane
     private Text txtFileSize;
     @FXML
     private Text txtFileLength;
-    
+
     private FileEntry fileEntry;
-    
-    
+
+
     public FileEntryController()
     {
-        super();
-        
-        FXMLLoader loader = new FXMLLoader(MKVToolNix.class.getResource("StartMenu/FileEntry.fxml"));
-        loader.setRoot(this);
-        loader.setController(this);
-        
-        try
-        {
-            loader.load();
-        }
-        catch (IOException e)
-        {
-            throw new RuntimeException(e);
-        }
+        super("StartMenu/FileEntry.fxml");
     }
-    
-    
+
+
     public void setFileEntry(FileEntry e)
     {
         fileEntry = e;
     }
-    
-    
+
+
     public void update()
     {
         txtFileName.setText(fileEntry.getFileName());

@@ -5,7 +5,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<fx:root type="javafx.scene.layout.AnchorPane" xmlns:fx="http://javafx.com/jxml">
+<fx:root type="javafx.scene.layout.AnchorPane" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.171">
   <Label fx:id="txtFileName" layoutX="14.0" layoutY="14.0" text="Label" AnchorPane.topAnchor="8.0">
     <font>
       <Font name="System Bold" size="18.0" />
@@ -13,6 +13,6 @@
   </Label>
   <Label layoutX="42.0" layoutY="42.0" text="File Size:" AnchorPane.bottomAnchor="8.0" AnchorPane.leftAnchor="42.0" AnchorPane.topAnchor="56.0" />
   <Label layoutX="42.0" layoutY="65.0" text="File Length:" AnchorPane.bottomAnchor="32.0" AnchorPane.leftAnchor="42.0" AnchorPane.topAnchor="32.0" />
-  <Text fx:id="txtFileSize" layoutX="128.0" layoutY="45.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" AnchorPane.bottomAnchor="32.0" AnchorPane.leftAnchor="128.0" AnchorPane.topAnchor="32.0" />
-  <Text fx:id="txtFileLength" layoutX="128.0" layoutY="69.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" AnchorPane.bottomAnchor="8.0" AnchorPane.leftAnchor="128.0" AnchorPane.topAnchor="56.0" />
+  <Text fx:id="txtFileLength" layoutX="128.0" layoutY="45.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" AnchorPane.bottomAnchor="32.0" AnchorPane.leftAnchor="128.0" AnchorPane.topAnchor="32.0" />
+  <Text fx:id="txtFileSize" layoutX="128.0" layoutY="69.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" AnchorPane.bottomAnchor="8.0" AnchorPane.leftAnchor="128.0" AnchorPane.topAnchor="56.0" />
 </fx:root>

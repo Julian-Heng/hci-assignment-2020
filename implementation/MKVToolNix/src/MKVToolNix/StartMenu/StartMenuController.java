@@ -15,6 +15,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
+import javafx.scene.control.SelectionMode;
 import javafx.util.Callback;
 
 
@@ -57,6 +58,7 @@ public class StartMenuController implements Initializable
                 new FileEntry("File3.ogg", "2.30 MB", "1:21.53")
         );
 
+        listRecentFiles.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
         listRecentFiles.setItems(observeRecentFiles);
         listRecentFiles.setCellFactory(new Callback<ListView<FileEntry>, ListCell<FileEntry>>()
         {
