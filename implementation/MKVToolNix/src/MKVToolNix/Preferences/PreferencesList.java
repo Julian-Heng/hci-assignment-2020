@@ -7,9 +7,12 @@ package MKVToolNix.Preferences;
 
 import MKVToolNix.CustomAnchorPane;
 import MKVToolNix.Misc.NotImplemented;
+import MKVToolNix.Preferences.ExecutingActions.ExecutingActions;
+import MKVToolNix.Preferences.PredefinedValues.PredefinedValues;
 import java.io.File;
 import java.util.HashMap;
 import java.util.Map;
+import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
 import javafx.scene.control.TreeItem;
 import javafx.scene.control.TreeView;
@@ -121,14 +124,14 @@ public class PreferencesList extends CustomAnchorPane
 
         entries.put("Often used selections", new PreferenceEntry("", false, new NotImplemented()));
 
-        entries.put("Predefined values", new PreferenceEntry("", false, new NotImplemented()));
+        entries.put("Predefined values", new PreferenceEntry("", false, new PredefinedValues()));
         entries.put("Default values", new PreferenceEntry("", false, new NotImplemented()));
         entries.put("Deriving track languages", new PreferenceEntry("", false, new NotImplemented()));
         entries.put("Destination file name", new PreferenceEntry("", false, new NotImplemented()));
         entries.put("Enabling items", new PreferenceEntry("", false, new NotImplemented()));
         entries.put("Playlists & Blu-rays", new PreferenceEntry("", false, new NotImplemented()));
 
-        entries.put("Executing actions", new PreferenceEntry("", false, new NotImplemented()));
+        entries.put("Executing actions", new PreferenceEntry("", false, new ExecutingActions()));
 
         entries.forEach((k, v) -> v.initNode(k));
 
@@ -154,10 +157,15 @@ public class PreferencesList extends CustomAnchorPane
 
         treePreferences.getSelectionModel()
                 .selectedItemProperty()
-                .addListener((obs, oldValue, newValue) ->
+                .addListener((ObservableValue<? extends TreeItem<String>> obs, TreeItem<String> oldValue, TreeItem<String> newValue) ->
                 {
+                    AnchorPane pane = entries.get(newValue.getValue()).getPreferencePane();
                     content.getChildren().clear();
-                    content.getChildren().add(entries.get(newValue.getValue()).getPreferencePane());
+                    AnchorPane.setTopAnchor(pane, 0.0);
+                    AnchorPane.setBottomAnchor(pane, 0.0);
+                    AnchorPane.setLeftAnchor(pane, 0.0);
+                    AnchorPane.setRightAnchor(pane, 0.0);
+                    content.getChildren().add(pane);
                 });
     }
 }

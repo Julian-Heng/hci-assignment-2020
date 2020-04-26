@@ -5,7 +5,6 @@
  */
 package MKVToolNix.Preferences;
 
-import MKVToolNix.Misc.NotImplemented;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.application.Platform;
@@ -35,8 +34,12 @@ public class PreferencesController implements Initializable
     @Override
     public void initialize(URL url, ResourceBundle rb)
     {
-        paneLeft.getChildren().add(new PreferencesList(paneRight));
-        //paneRight.getChildren().add(new NotImplemented());
+        AnchorPane list = new PreferencesList(paneRight);
+        AnchorPane.setTopAnchor(list, 0.0);
+        AnchorPane.setBottomAnchor(list, 0.0);
+        AnchorPane.setLeftAnchor(list, 0.0);
+        AnchorPane.setRightAnchor(list, 0.0);
+        paneLeft.getChildren().add(list);
     }
 
 
