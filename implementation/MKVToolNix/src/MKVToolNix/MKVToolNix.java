@@ -23,8 +23,8 @@ public class MKVToolNix extends Application
     {
         //Parent root = FXMLLoader.load(getClass().getResource("StartMenu/StartMenu.fxml"));
         //Parent root = FXMLLoader.load(getClass().getResource("AddSources/AddSourceFiles.fxml"));
-        //Parent root = FXMLLoader.load(getClass().getResource("MainMenu/MainMenu.fxml"));
-        Parent root = FXMLLoader.load(getClass().getResource("Preferences/Preferences.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("MainMenu/MainMenu.fxml"));
+        //Parent root = FXMLLoader.load(getClass().getResource("Preferences/Preferences.fxml"));
 
         Scene scene = new Scene(root);
 
