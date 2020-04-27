@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Accordion?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.TitledPane?>
+<?import javafx.scene.control.TreeTableColumn?>
+<?import javafx.scene.control.TreeTableView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<fx:root id="AnchorPane" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" type="javafx.scene.layout.AnchorPane" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+  <children>
+    <SplitPane dividerPositions="0.5" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <items>
+        <AnchorPane prefHeight="200.0" prefWidth="200.0">
+          <children>
+            <Label text="Task Files:" AnchorPane.leftAnchor="4.0" AnchorPane.topAnchor="4.0" />
+            <AnchorPane layoutY="27.0" prefHeight="173.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="28.0">
+              <children>
+                <TreeTableView fx:id="treeEntries" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                  <columns>
+                    <TreeTableColumn fx:id="colType" prefWidth="75.0" text="Type" />
+                    <TreeTableColumn fx:id="colCodec" prefWidth="75.0" text="Codec" />
+                    <TreeTableColumn fx:id="colCopy" prefWidth="75.0" text="Copy item" />
+                    <TreeTableColumn fx:id="colLang" prefWidth="75.0" text="Language" />
+                    <TreeTableColumn fx:id="colName" prefWidth="75.0" text="Name" />
+                    <TreeTableColumn fx:id="colID" prefWidth="75.0" text="ID" />
+                    <TreeTableColumn fx:id="colDefault" prefWidth="75.0" text="Default track in output" />
+                    <TreeTableColumn fx:id="colForced" prefWidth="75.0" text="Forced track" />
+                    <TreeTableColumn fx:id="colCharSet" prefWidth="75.0" text="Character set" />
+                    <TreeTableColumn fx:id="colProp" prefWidth="75.0" text="Properties" />
+                    <TreeTableColumn fx:id="colSourceFile" prefWidth="75.0" text="Source file" />
+                    <TreeTableColumn fx:id="colSourceDir" prefWidth="75.0" text="Source file's directory" />
+                    <TreeTableColumn fx:id="colProgram" prefWidth="75.0" text="Program" />
+                    <TreeTableColumn fx:id="colDelay" prefWidth="75.0" text="Delay" />
+                  </columns>
+                </TreeTableView>
+              </children>
+            </AnchorPane>
+          </children>
+        </AnchorPane>
+        <AnchorPane prefHeight="200.0" prefWidth="200.0">
+          <children>
+            <Label text="Properties:" AnchorPane.leftAnchor="4.0" AnchorPane.topAnchor="4.0" />
+            <AnchorPane prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="28.0">
+              <children>
+                <Accordion layoutX="-53.0" layoutY="30.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                  <panes>
+                    <TitledPane animated="false" text="General options">
+                      <content>
+                        <AnchorPane>
+                          <children>
+                            <AnchorPane fx:id="panePropGeneral" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                          </children>
+                        </AnchorPane>
+                      </content>
+                    </TitledPane>
+                    <TitledPane animated="false" text="Timestamps and Default Durations">
+                      <content>
+                        <AnchorPane>
+                          <children>
+                            <AnchorPane fx:id="panePropTimeDuration" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                          </children>
+                        </AnchorPane>
+                      </content>
+                    </TitledPane>
+                    <TitledPane animated="false" text="Video Properties">
+                      <content>
+                        <AnchorPane>
+                          <children>
+                            <AnchorPane fx:id="panePropVideo" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                          </children>
+                        </AnchorPane>
+                      </content>
+                    </TitledPane>
+                    <TitledPane animated="false" text="Audio Properties">
+                      <content>
+                        <AnchorPane>
+                          <children>
+                            <AnchorPane fx:id="panePropAudio" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                          </children>
+                        </AnchorPane>
+                      </content>
+                    </TitledPane>
+                    <TitledPane animated="false" text="Subtitle and Chapter Properties">
+                      <content>
+                        <AnchorPane>
+                          <children>
+                            <AnchorPane fx:id="panePropSubtitleChapter" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                          </children>
+                        </AnchorPane>
+                      </content>
+                    </TitledPane>
+                    <TitledPane animated="false" text="Miscellaneous">
+                      <content>
+                        <AnchorPane>
+                          <children>
+                            <AnchorPane fx:id="panePropMisc" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                          </children>
+                        </AnchorPane>
+                      </content>
+                    </TitledPane>
+                  </panes>
+                </Accordion>
+              </children>
+            </AnchorPane>
+          </children>
+        </AnchorPane>
+      </items>
+      <opaqueInsets>
+        <Insets />
+      </opaqueInsets>
+    </SplitPane>
+  </children>
+</fx:root>

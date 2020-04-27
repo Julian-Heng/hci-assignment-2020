@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ButtonBar?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.SplitMenuButton?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<fx:root id="AnchorPane" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" type="javafx.scene.layout.AnchorPane" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+  <children>
+    <TabPane prefHeight="200.0" prefWidth="200.0" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="86.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <tabs>
+        <Tab fx:id="tabInput" text="Input">
+          <content>
+            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+          </content>
+        </Tab>
+        <Tab fx:id="tabOutput" text="Output">
+          <content>
+            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+          </content>
+        </Tab>
+            <Tab fx:id="tabAttachment" text="Attachments">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+              </content>
+            </Tab>
+      </tabs>
+    </TabPane>
+      
+    <ButtonBar buttonMinWidth="100.0" prefHeight="40.0" prefWidth="200.0" AnchorPane.bottomAnchor="8.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="14.0">
+      <buttons>
+        <SplitMenuButton fx:id="btnStartMultiplex" mnemonicParsing="false" text="Start Multiplexing">
+          <items>
+            <MenuItem mnemonicParsing="false" text="Add files">
+              <graphic>
+                <ImageView>
+                  <Image requestedHeight="16.0" requestedWidth="16.0" url="file:resources/icons/32x32/list-add.png" />
+                </ImageView>
+              </graphic>
+            </MenuItem>
+            <MenuItem mnemonicParsing="false" text="Append files">
+              <graphic>
+                <ImageView>
+                  <Image requestedHeight="16.0" requestedWidth="16.0" url="file:resources/icons/32x32/distribute-horizontal-x.png" />
+                </ImageView>
+              </graphic>
+            </MenuItem>
+            <MenuItem mnemonicParsing="false" text="Add files as additional parts">
+              <graphic>
+                <ImageView>
+                  <Image requestedHeight="16.0" requestedWidth="16.0" url="file:resources/icons/32x32/distribute-horizontal-margin.png" />
+                </ImageView>
+              </graphic>
+            </MenuItem>
+          </items>
+        </SplitMenuButton>
+        <SplitMenuButton fx:id="btnAddJob" mnemonicParsing="false" text="Add to job queue">
+          <items>
+            <MenuItem mnemonicParsing="false" text="Afterwards leave the settings as they are" />
+            <MenuItem mnemonicParsing="false" text="Afterwards create new multiplex settings and close the current ones" />
+            <MenuItem mnemonicParsing="false" text="Afterwards remove all source files" />
+            <MenuItem mnemonicParsing="false" text="Afterwards close the current multiplex settings" />
+          </items>
+        </SplitMenuButton>
+        <SplitMenuButton fx:id="btnAddSources" mnemonicParsing="false" text="Add Sources">
+          <graphic>
+            <ImageView>
+              <Image requestedHeight="16.0" requestedWidth="16.0" url="file:resources/icons/32x32/list-add.png" />
+            </ImageView>
+          </graphic>
+          <items>
+            <MenuItem mnemonicParsing="false" text="Afterwards leave the settings as they are" />
+            <MenuItem mnemonicParsing="false" text="Afterwards create new multiplex settings and close the current ones" />
+            <MenuItem mnemonicParsing="false" text="Afterwards remove all source files" />
+            <MenuItem mnemonicParsing="false" text="Afterwards close the current multiplex settings" />
+          </items>
+        </SplitMenuButton>
+      </buttons>
+    </ButtonBar>
+    <Label layoutX="14.0" layoutY="229.0" text="Destination file:" AnchorPane.bottomAnchor="55.0" AnchorPane.leftAnchor="14.0" />
+    <TextField layoutX="127.0" layoutY="224.0" prefHeight="26.0" prefWidth="144.0" AnchorPane.bottomAnchor="50.0" AnchorPane.leftAnchor="127.0" AnchorPane.rightAnchor="86.0" />
+    <Button layoutX="318.0" layoutY="224.0" maxHeight="26.0" maxWidth="26.0" minHeight="26.0" minWidth="26.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="26.0" AnchorPane.bottomAnchor="50.0" AnchorPane.rightAnchor="14.0">
+      <graphic>
+        <ImageView>
+          <Image requestedHeight="16.0" requestedWidth="16.0" url="file:resources/icons/16x16/folder-favorites.png" />
+        </ImageView>
+      </graphic>
+    </Button>
+    <Button layoutX="281.0" layoutY="210.0" maxHeight="26.0" maxWidth="26.0" minHeight="26.0" minWidth="26.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="26.0" AnchorPane.bottomAnchor="50.0" AnchorPane.rightAnchor="50.0">
+      <graphic>
+        <ImageView>
+          <image>
+            <Image requestedHeight="16.0" requestedWidth="16.0" url="file:resources/icons/16x16/document-open.png" />
+          </image>
+        </ImageView>
+      </graphic>
+    </Button>
+  </children>
+</fx:root>

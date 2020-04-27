@@ -6,6 +6,7 @@
 package MKVToolNix.MainMenu;
 
 import MKVToolNix.CustomAnchorPane;
+import MKVToolNix.MainMenu.Multiplexer.Multiplexer;
 import MKVToolNix.Misc.NotImplemented;
 import java.net.URL;
 import java.util.HashMap;
@@ -15,7 +16,6 @@ import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.ToggleButton;
 import javafx.scene.layout.AnchorPane;
@@ -64,7 +64,7 @@ public class MainMenuController implements Initializable
 
         menuEntries = new HashMap<>();
 
-        menuEntries.put(tglbtnMultiplexer.getText(), NotImplemented.getInstance());
+        menuEntries.put(tglbtnMultiplexer.getText(), new Multiplexer());
         menuEntries.put(tglbtnInfoTool.getText(), NotImplemented.getInstance());
         menuEntries.put(tglbtnHeaderEditor.getText(), NotImplemented.getInstance());
         menuEntries.put(tglbtnChapterEditor.getText(), NotImplemented.getInstance());
