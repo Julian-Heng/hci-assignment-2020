@@ -33,7 +33,7 @@ public class ExecuteProgramPane extends CustomAnchorPane
         txtHelp.appendText("Examples\n");
         txtHelp.appendText("  - Play a WAV file with the default application:  /usr/bin/xdg-open /home/janedoe/Audio/signal.wav\n");
         txtHelp.appendText("  - Shut down the system in one minute:  /usr/bin/sudo /sbin/shutdown --poweroff +1\n");
-        txtHelp.appendText("  - Open the multiplexed file with a player:\n"
-                           + "    /usr/bin/vlc '<MTX_DESTINATION_FILE_NAME>'");
+        txtHelp.appendText("  - Open the multiplexed file with a player:\n");
+        txtHelp.appendText("        /usr/bin/vlc '<MTX_DESTINATION_FILE_NAME>'");
     }
 }
