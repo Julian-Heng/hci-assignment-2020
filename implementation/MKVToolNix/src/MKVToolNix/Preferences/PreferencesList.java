@@ -115,21 +115,21 @@ public class PreferencesList extends CustomAnchorPane
         PreferencesTreeItem root = new PreferencesTreeItem();
         root.setExpanded(true);
 
-        entries.put("GUI", new PreferenceEntry("resources/icons/16x16/mkvmerge.png", true, new NotImplemented()));
-        entries.put("Multiplexer", new PreferenceEntry("resources/icons/16x16/merge.png", true, new NotImplemented()));
-        entries.put("Info tool", new PreferenceEntry("resources/icons/16x16/document-preview-archive.png", false, new NotImplemented()));
-        entries.put("Header editor", new PreferenceEntry("resources/icons/16x16/document-edit.png", false, new NotImplemented()));
-        entries.put("Chapter editor", new PreferenceEntry("resources/icons/16x16/story-editor.png", false, new NotImplemented()));
-        entries.put("Jobs & job queue", new PreferenceEntry("resources/icons/16x16/view-task.png", true, new NotImplemented()));
+        entries.put("GUI", new PreferenceEntry("resources/icons/16x16/mkvmerge.png", true, NotImplemented.getInstance()));
+        entries.put("Multiplexer", new PreferenceEntry("resources/icons/16x16/merge.png", true, NotImplemented.getInstance()));
+        entries.put("Info tool", new PreferenceEntry("resources/icons/16x16/document-preview-archive.png", false, NotImplemented.getInstance()));
+        entries.put("Header editor", new PreferenceEntry("resources/icons/16x16/document-edit.png", false, NotImplemented.getInstance()));
+        entries.put("Chapter editor", new PreferenceEntry("resources/icons/16x16/story-editor.png", false, NotImplemented.getInstance()));
+        entries.put("Jobs & job queue", new PreferenceEntry("resources/icons/16x16/view-task.png", true, NotImplemented.getInstance()));
 
-        entries.put("Often used selections", new PreferenceEntry("", false, new NotImplemented()));
+        entries.put("Often used selections", new PreferenceEntry("", false, NotImplemented.getInstance()));
 
         entries.put("Predefined values", new PreferenceEntry("", false, new PredefinedValues()));
-        entries.put("Default values", new PreferenceEntry("", false, new NotImplemented()));
-        entries.put("Deriving track languages", new PreferenceEntry("", false, new NotImplemented()));
-        entries.put("Destination file name", new PreferenceEntry("", false, new NotImplemented()));
-        entries.put("Enabling items", new PreferenceEntry("", false, new NotImplemented()));
-        entries.put("Playlists & Blu-rays", new PreferenceEntry("", false, new NotImplemented()));
+        entries.put("Default values", new PreferenceEntry("", false, NotImplemented.getInstance()));
+        entries.put("Deriving track languages", new PreferenceEntry("", false, NotImplemented.getInstance()));
+        entries.put("Destination file name", new PreferenceEntry("", false, NotImplemented.getInstance()));
+        entries.put("Enabling items", new PreferenceEntry("", false, NotImplemented.getInstance()));
+        entries.put("Playlists & Blu-rays", new PreferenceEntry("", false, NotImplemented.getInstance()));
 
         entries.put("Executing actions", new PreferenceEntry("", false, new ExecutingActions()));
 

@@ -14,8 +14,17 @@ import MKVToolNix.CustomAnchorPane;
  */
 public class NotImplemented extends CustomAnchorPane
 {
-    public NotImplemented()
+    public static NotImplemented instance = null;
+
+
+    private NotImplemented()
     {
         super("Misc/NotImplemented.fxml");
+    }
+
+
+    public static NotImplemented getInstance()
+    {
+        return ((instance == null ? new NotImplemented() : instance));
     }
 }
