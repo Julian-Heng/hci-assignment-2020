@@ -77,11 +77,11 @@ public class MainMenuController implements Initializable
         menuEntries = new HashMap<>();
 
         menuEntries.put(tglbtnMultiplexer.getText(), new Multiplexer());
-        menuEntries.put(tglbtnInfoTool.getText(), NotImplemented.getInstance());
-        menuEntries.put(tglbtnHeaderEditor.getText(), NotImplemented.getInstance());
-        menuEntries.put(tglbtnChapterEditor.getText(), NotImplemented.getInstance());
-        menuEntries.put(tglbtnJobQueue.getText(), NotImplemented.getInstance());
-        menuEntries.put(tglbtnJobOutput.getText(), NotImplemented.getInstance());
+        menuEntries.put(tglbtnInfoTool.getText(), new NotImplemented("resources/stubs/Info-Tool.png"));
+        menuEntries.put(tglbtnHeaderEditor.getText(), new NotImplemented("resources/stubs/Header-Editor.png"));
+        menuEntries.put(tglbtnChapterEditor.getText(), new NotImplemented("resources/stubs/Chapter-Editor.png"));
+        menuEntries.put(tglbtnJobQueue.getText(), new NotImplemented("resources/stubs/Job-Queue.png"));
+        menuEntries.put(tglbtnJobOutput.getText(), new NotImplemented("resources/stubs/Job-Output.png"));
 
         menuDropdown = new HashMap<>();
 
@@ -180,7 +180,7 @@ public class MainMenuController implements Initializable
 
         menu.add(makeMenuItem("Start all pending jobs", "resources/icons/16x16/media-playback-start.png"));
         menu.add(makeMenuItem());
-        subMenu = new Menu("Stop job queue", Utils.makeImage("resources/icons/16x16/media-playback-stop.png"));
+        subMenu = new Menu("Stop job queue", Utils.makeImageView("resources/icons/16x16/media-playback-stop.png"));
         subMenu.getItems().addAll(
                 makeMenuItem("Stop after all running jobs have finished"),
                 makeMenuItem("Abort all running jobs and stop immediately"));
@@ -253,7 +253,7 @@ public class MainMenuController implements Initializable
 
     private MenuItem makeMenuItem(String text, String imgPath)
     {
-        return new MenuItem(text, Utils.makeImage(imgPath));
+        return new MenuItem(text, Utils.makeImageView(imgPath));
     }
 
 

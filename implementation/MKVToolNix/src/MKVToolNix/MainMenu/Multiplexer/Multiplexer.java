@@ -33,8 +33,8 @@ public class Multiplexer extends CustomAnchorPane
             super("MainMenu/Multiplexer/MultiplexerJob.fxml");
 
             tabInput.setContent(new MultiplexerInput());
-            tabOutput.setContent(NotImplemented.getInstance());
-            tabAttachment.setContent(NotImplemented.getInstance());
+            tabOutput.setContent(new NotImplemented("resources/stubs/Output.png"));
+            tabAttachment.setContent(new NotImplemented("resources/stubs/Attachment.png"));
         }
     }
 

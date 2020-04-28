@@ -226,12 +226,12 @@ public class MultiplexerInput extends CustomAnchorPane
         treeEntries.setShowRoot(false);
 
         // Properties
-        panePropGeneral.getChildren().add(NotImplemented.getInstance());
-        panePropTimeDuration.getChildren().add(NotImplemented.getInstance());
-        panePropVideo.getChildren().add(NotImplemented.getInstance());
-        panePropAudio.getChildren().add(NotImplemented.getInstance());
-        panePropSubtitleChapter.getChildren().add(NotImplemented.getInstance());
-        panePropMisc.getChildren().add(NotImplemented.getInstance());
+        panePropGeneral.getChildren().add(new NotImplemented(""));
+        panePropTimeDuration.getChildren().add(new NotImplemented(""));
+        panePropVideo.getChildren().add(new NotImplemented(""));
+        panePropAudio.getChildren().add(new NotImplemented(""));
+        panePropSubtitleChapter.getChildren().add(new NotImplemented(""));
+        panePropMisc.getChildren().add(new NotImplemented(""));
     }
 
 

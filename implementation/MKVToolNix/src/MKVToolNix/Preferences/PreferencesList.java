@@ -9,7 +9,6 @@ import MKVToolNix.CustomAnchorPane;
 import MKVToolNix.Misc.NotImplemented;
 import MKVToolNix.Preferences.ExecutingActions.ExecutingActions;
 import MKVToolNix.Preferences.PredefinedValues.PredefinedValues;
-import static MKVToolNix.Utils.makeImage;
 import java.util.HashMap;
 import java.util.Map;
 import javafx.beans.value.ObservableValue;
@@ -17,6 +16,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.TreeItem;
 import javafx.scene.control.TreeView;
 import javafx.scene.layout.AnchorPane;
+import static MKVToolNix.Utils.makeImageView;
 
 
 /**
@@ -39,7 +39,7 @@ public class PreferencesList extends CustomAnchorPane
 
             setValue(text);
             if (imgPath != null && !imgPath.isEmpty())
-                setGraphic(makeImage(imgPath));
+                setGraphic(makeImageView(imgPath));
             setExpanded(expand);
         }
     }
@@ -107,21 +107,21 @@ public class PreferencesList extends CustomAnchorPane
         PreferencesTreeItem root = new PreferencesTreeItem();
         root.setExpanded(true);
 
-        entries.put("GUI", new PreferenceEntry("resources/icons/16x16/mkvmerge.png", true, NotImplemented.getInstance()));
-        entries.put("Multiplexer", new PreferenceEntry("resources/icons/16x16/merge.png", true, NotImplemented.getInstance()));
-        entries.put("Info tool", new PreferenceEntry("resources/icons/16x16/document-preview-archive.png", false, NotImplemented.getInstance()));
-        entries.put("Header editor", new PreferenceEntry("resources/icons/16x16/document-edit.png", false, NotImplemented.getInstance()));
-        entries.put("Chapter editor", new PreferenceEntry("resources/icons/16x16/story-editor.png", false, NotImplemented.getInstance()));
-        entries.put("Jobs & job queue", new PreferenceEntry("resources/icons/16x16/view-task.png", true, NotImplemented.getInstance()));
+        entries.put("GUI", new PreferenceEntry("resources/icons/16x16/mkvmerge.png", true, new NotImplemented("resources/stubs/Preference-GUI.png")));
+        entries.put("Multiplexer", new PreferenceEntry("resources/icons/16x16/merge.png", true, new NotImplemented("resources/stubs/Preference-Multiplexer.png")));
+        entries.put("Info tool", new PreferenceEntry("resources/icons/16x16/document-preview-archive.png", false, new NotImplemented("resources/stubs/Preference-Info_tool.png")));
+        entries.put("Header editor", new PreferenceEntry("resources/icons/16x16/document-edit.png", false, new NotImplemented("resources/stubs/Preference-Header_Editor.png")));
+        entries.put("Chapter editor", new PreferenceEntry("resources/icons/16x16/story-editor.png", false, new NotImplemented("resources/stubs/Preference-Chapter_editor.png")));
+        entries.put("Jobs & job queue", new PreferenceEntry("resources/icons/16x16/view-task.png", true, new NotImplemented("resources/stubs/Preference-Job_&_job_queue.png")));
 
-        entries.put("Often used selections", new PreferenceEntry("", false, NotImplemented.getInstance()));
+        entries.put("Often used selections", new PreferenceEntry("", false, new NotImplemented("resources/stubs/Preference-Often_used_selections.png")));
 
         entries.put("Predefined values", new PreferenceEntry("", false, new PredefinedValues()));
-        entries.put("Default values", new PreferenceEntry("", false, NotImplemented.getInstance()));
-        entries.put("Deriving track languages", new PreferenceEntry("", false, NotImplemented.getInstance()));
-        entries.put("Destination file name", new PreferenceEntry("", false, NotImplemented.getInstance()));
-        entries.put("Enabling items", new PreferenceEntry("", false, NotImplemented.getInstance()));
-        entries.put("Playlists & Blu-rays", new PreferenceEntry("", false, NotImplemented.getInstance()));
+        entries.put("Default values", new PreferenceEntry("", false, new NotImplemented("resources/stubs/Preference-Default_values.png")));
+        entries.put("Deriving track languages", new PreferenceEntry("", false, new NotImplemented("resources/stubs/Preference-Deriving_track_languages.png")));
+        entries.put("Destination file name", new PreferenceEntry("", false, new NotImplemented("resources/stubs/Preference-Destination_file_name.png")));
+        entries.put("Enabling items", new PreferenceEntry("", false, new NotImplemented("resources/stubs/Preference-Enabling_items.png")));
+        entries.put("Playlists & Blu-rays", new PreferenceEntry("", false, new NotImplemented("resources/stubs/Preference-Playlists_&_Blu-rays.png")));
 
         entries.put("Executing actions", new PreferenceEntry("", false, new ExecutingActions()));
 
@@ -159,5 +159,7 @@ public class PreferencesList extends CustomAnchorPane
                     AnchorPane.setRightAnchor(pane, 0.0);
                     content.getChildren().add(pane);
                 });
+
+        treePreferences.getSelectionModel().selectFirst();
     }
 }

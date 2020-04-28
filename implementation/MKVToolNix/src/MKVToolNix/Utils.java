@@ -16,8 +16,14 @@ import javafx.scene.image.ImageView;
  */
 public class Utils
 {
-    public static ImageView makeImage(String path)
+    public static Image makeImage(String path)
     {
-        return new ImageView(new Image(new File(path).toURI().toString()));
+        return new Image(new File(path).toURI().toString());
+    }
+
+
+    public static ImageView makeImageView(String path)
+    {
+        return new ImageView(makeImage(path));
     }
 }

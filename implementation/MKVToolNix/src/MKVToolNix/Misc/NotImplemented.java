@@ -6,6 +6,10 @@
 package MKVToolNix.Misc;
 
 import MKVToolNix.CustomAnchorPane;
+import MKVToolNix.Utils;
+import javafx.fxml.FXML;
+import javafx.scene.image.ImageView;
+import javafx.scene.layout.AnchorPane;
 
 
 /**
@@ -14,17 +18,18 @@ import MKVToolNix.CustomAnchorPane;
  */
 public class NotImplemented extends CustomAnchorPane
 {
-    public static NotImplemented instance = null;
+    @FXML
+    private AnchorPane anchorPane;
+    @FXML
+    private ImageView img;
 
 
-    private NotImplemented()
+    public NotImplemented(String path)
     {
         super("Misc/NotImplemented.fxml");
-    }
 
-
-    public static NotImplemented getInstance()
-    {
-        return ((instance == null ? new NotImplemented() : instance));
+        img.setImage(Utils.makeImage(path));
+        img.fitWidthProperty().bind(anchorPane.widthProperty());
+        img.fitHeightProperty().bind(anchorPane.heightProperty());
     }
 }
