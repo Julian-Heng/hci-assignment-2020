@@ -9,15 +9,13 @@ import MKVToolNix.CustomAnchorPane;
 import MKVToolNix.Misc.NotImplemented;
 import MKVToolNix.Preferences.ExecutingActions.ExecutingActions;
 import MKVToolNix.Preferences.PredefinedValues.PredefinedValues;
-import java.io.File;
+import static MKVToolNix.Utils.makeImage;
 import java.util.HashMap;
 import java.util.Map;
 import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
 import javafx.scene.control.TreeItem;
 import javafx.scene.control.TreeView;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 
 
@@ -43,12 +41,6 @@ public class PreferencesList extends CustomAnchorPane
             if (imgPath != null && !imgPath.isEmpty())
                 setGraphic(makeImage(imgPath));
             setExpanded(expand);
-        }
-
-
-        private ImageView makeImage(String path)
-        {
-            return new ImageView(new Image(new File(path).toURI().toString()));
         }
     }
 

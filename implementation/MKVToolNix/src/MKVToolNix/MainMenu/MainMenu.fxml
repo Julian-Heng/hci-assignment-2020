@@ -76,7 +76,7 @@
             </MenuItem>
           </items>
         </Menu>
-        <Menu mnemonicParsing="false" text="Tool Name Placeholder">
+        <Menu fx:id="menuTool" mnemonicParsing="false" text="Tool Name Placeholder">
         </Menu>
         <Menu mnemonicParsing="false" text="Window">
         </Menu>
@@ -149,44 +149,44 @@
     </MenuBar>
     <AnchorPane layoutY="29.0" prefHeight="571.0" prefWidth="112.0" style="-fx-background-color: black;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="29.0">
       <children>
-        <VBox layoutX="14.0" layoutY="14.0" prefHeight="396.0" prefWidth="96.0" AnchorPane.bottomAnchor="14.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="14.0">
+        <VBox layoutX="14.0" layoutY="14.0" prefHeight="396.0" prefWidth="96.0" AnchorPane.bottomAnchor="14.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
           <children>
-            <ToggleButton fx:id="tglbtnMultiplexer" contentDisplay="TOP" mnemonicParsing="false" onAction="#handleMainBtnChange" prefHeight="84.0" prefWidth="84.0" style="-fx-background-color: black;" text="Multiplexer" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+            <ToggleButton fx:id="tglbtnMultiplexer" contentDisplay="TOP" mnemonicParsing="false" onAction="#handleMainBtnChange" prefHeight="84.0" prefWidth="112.0" style="-fx-background-color: black;" text="Multiplexer" textAlignment="CENTER" textFill="WHITE" wrapText="true">
               <graphic>
                 <ImageView>
                   <Image requestedHeight="32.0" requestedWidth="32.0" url="file:resources/icons/32x32/merge.png" />
                 </ImageView>
               </graphic>
             </ToggleButton>
-            <ToggleButton fx:id="tglbtnInfoTool" contentDisplay="TOP" mnemonicParsing="false" onAction="#handleMainBtnChange" prefHeight="84.0" prefWidth="84.0" style="-fx-background-color: black;" text="Info tool" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+            <ToggleButton fx:id="tglbtnInfoTool" contentDisplay="TOP" mnemonicParsing="false" onAction="#handleMainBtnChange" prefHeight="84.0" prefWidth="112.0" style="-fx-background-color: black;" text="Info tool" textAlignment="CENTER" textFill="WHITE" wrapText="true">
               <graphic>
                 <ImageView>
                   <Image requestedHeight="32.0" requestedWidth="32.0" url="file:resources/icons/32x32/document-preview-archive.png" />
                 </ImageView>
               </graphic>
             </ToggleButton>
-            <ToggleButton fx:id="tglbtnHeaderEditor" contentDisplay="TOP" mnemonicParsing="false" onAction="#handleMainBtnChange" prefHeight="84.0" prefWidth="84.0" style="-fx-background-color: black;" text="Header editor" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+            <ToggleButton fx:id="tglbtnHeaderEditor" contentDisplay="TOP" mnemonicParsing="false" onAction="#handleMainBtnChange" prefHeight="84.0" prefWidth="112.0" style="-fx-background-color: black;" text="Header editor" textAlignment="CENTER" textFill="WHITE" wrapText="true">
               <graphic>
                 <ImageView>
                   <Image requestedHeight="32.0" requestedWidth="32.0" url="file:resources/icons/32x32/document-edit.png" />
                 </ImageView>
               </graphic>
             </ToggleButton>
-            <ToggleButton fx:id="tglbtnChapterEditor" contentDisplay="TOP" mnemonicParsing="false" onAction="#handleMainBtnChange" prefHeight="84.0" prefWidth="84.0" style="-fx-background-color: black;" text="Chapter editor" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+            <ToggleButton fx:id="tglbtnChapterEditor" contentDisplay="TOP" mnemonicParsing="false" onAction="#handleMainBtnChange" prefHeight="84.0" prefWidth="112.0" style="-fx-background-color: black;" text="Chapter editor" textAlignment="CENTER" textFill="WHITE" wrapText="true">
               <graphic>
                 <ImageView>
                   <Image requestedHeight="32.0" requestedWidth="32.0" url="file:resources/icons/32x32/story-editor.png" />
                 </ImageView>
               </graphic>
             </ToggleButton>
-            <ToggleButton fx:id="tglbtnJobQueue" contentDisplay="TOP" mnemonicParsing="false" onAction="#handleMainBtnChange" prefHeight="84.0" prefWidth="84.0" style="-fx-background-color: black;" text="Job queue" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+            <ToggleButton fx:id="tglbtnJobQueue" contentDisplay="TOP" mnemonicParsing="false" onAction="#handleMainBtnChange" prefHeight="84.0" prefWidth="112.0" style="-fx-background-color: black;" text="Job queue" textAlignment="CENTER" textFill="WHITE" wrapText="true">
               <graphic>
                 <ImageView>
                   <Image requestedHeight="32.0" requestedWidth="32.0" url="file:resources/icons/32x32/view-task.png" />
                 </ImageView>
               </graphic>
             </ToggleButton>
-            <ToggleButton fx:id="tglbtnJobOutput" contentDisplay="TOP" mnemonicParsing="false" onAction="#handleMainBtnChange" prefHeight="84.0" prefWidth="84.0" style="-fx-background-color: black;" text="Job output" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+            <ToggleButton fx:id="tglbtnJobOutput" contentDisplay="TOP" mnemonicParsing="false" onAction="#handleMainBtnChange" prefHeight="84.0" prefWidth="112.0" style="-fx-background-color: black;" text="Job output" textAlignment="CENTER" textFill="WHITE" wrapText="true">
               <graphic>
                 <ImageView>
                   <Image requestedHeight="32.0" requestedWidth="32.0" url="file:resources/icons/32x32/system-run.png" />

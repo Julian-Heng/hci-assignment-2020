@@ -209,12 +209,12 @@ public class MultiplexerInput extends CustomAnchorPane
 
         colType.setCellValueFactory(p -> makeString(p.getValue().getValue().getType()));
         colCodec.setCellValueFactory(p -> makeString(p.getValue().getValue().getCodec()));
-        colCopy.setCellValueFactory(p -> makeBoolString(p.getValue().getValue().getCopy()));
+        colCopy.setCellValueFactory(p -> makeString(p.getValue().getValue().getCopy()));
         colLang.setCellValueFactory(p -> makeString(p.getValue().getValue().getLanguage()));
         colName.setCellValueFactory(p -> makeString(p.getValue().getValue().getName()));
-        colID.setCellValueFactory(p -> makeIntString(p.getValue().getValue().getID()));
-        colDefault.setCellValueFactory(p -> makeBoolString(p.getValue().getValue().getDefaultTrackOutput()));
-        colForced.setCellValueFactory(p -> makeBoolString(p.getValue().getValue().getForced()));
+        colID.setCellValueFactory(p -> makeString(p.getValue().getValue().getID()));
+        colDefault.setCellValueFactory(p -> makeString(p.getValue().getValue().getDefaultTrackOutput()));
+        colForced.setCellValueFactory(p -> makeString(p.getValue().getValue().getForced()));
         colCharSet.setCellValueFactory(p -> makeString(p.getValue().getValue().getCharSet()));
         colProp.setCellValueFactory(p -> makeString(p.getValue().getValue().getProperties()));
         colSourceFile.setCellValueFactory(p -> makeString(p.getValue().getValue().getSourceFile()));
@@ -241,13 +241,13 @@ public class MultiplexerInput extends CustomAnchorPane
     }
 
 
-    private ReadOnlyStringWrapper makeIntString(Integer i)
+    private ReadOnlyStringWrapper makeString(Integer i)
     {
         return new ReadOnlyStringWrapper(i == null ? "" : i.toString());
     }
 
 
-    private ReadOnlyStringWrapper makeBoolString(Boolean b)
+    private ReadOnlyStringWrapper makeString(Boolean b)
     {
         return new ReadOnlyStringWrapper(b == null ? "" : b.toString());
     }
