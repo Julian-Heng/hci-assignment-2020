@@ -6,6 +6,11 @@
 package MKVToolNix.MainMenu.Multiplexer.Property;
 
 import MKVToolNix.CustomAnchorPane;
+import javafx.fxml.FXML;
+import javafx.scene.control.Button;
+import javafx.scene.control.TextField;
+import javafx.stage.FileChooser;
+import javafx.stage.Stage;
 
 
 /**
@@ -14,8 +19,19 @@ import MKVToolNix.CustomAnchorPane;
  */
 public class FileSelector extends CustomAnchorPane
 {
+    @FXML
+    private TextField txt;
+    @FXML
+    private Button btn;
+
+
     public FileSelector()
     {
         super("MainMenu/Multiplexer/Property/FileSelector.fxml");
+
+        btn.setOnAction(e ->
+        {
+            txt.setText((new FileChooser()).showOpenDialog(((Stage)getScene().getWindow())).getName());
+        });
     }
 }
