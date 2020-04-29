@@ -6,6 +6,7 @@
 package MKVToolNix;
 
 import javafx.application.Application;
+import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -32,6 +33,8 @@ public class MKVToolNix extends Application
         stage.setTitle("MKVToolNix - Gooey Edition");
         //stage.setResizable(false);
 
+        stage.setOnCloseRequest((e) -> MKVToolNix.die(0));
+
         stage.show();
     }
 
@@ -42,5 +45,12 @@ public class MKVToolNix extends Application
     public static void main(String[] args)
     {
         launch(args);
+    }
+
+
+    public static void die(int code)
+    {
+        Platform.exit();
+        System.exit(code);
     }
 }

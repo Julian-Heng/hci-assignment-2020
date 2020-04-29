@@ -5,6 +5,7 @@
  */
 package MKVToolNix.MainMenu;
 
+import MKVToolNix.MKVToolNix;
 import MKVToolNix.MainMenu.Entry.ChapterEditorEntry;
 import MKVToolNix.MainMenu.Entry.HeaderEditorEntry;
 import MKVToolNix.MainMenu.Entry.InfoToolEntry;
@@ -12,11 +13,12 @@ import MKVToolNix.MainMenu.Entry.JobOutputEntry;
 import MKVToolNix.MainMenu.Entry.JobQueueEntry;
 import MKVToolNix.MainMenu.Entry.MenuEntry;
 import MKVToolNix.MainMenu.Entry.MultiplexerEntry;
+import MKVToolNix.Utils;
+import java.io.IOException;
 import java.net.URL;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.ResourceBundle;
-import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -33,6 +35,9 @@ import javafx.scene.layout.AnchorPane;
  */
 public class MainMenuController implements Initializable
 {
+    @FXML
+    private MenuItem menuPreferences;
+
     @FXML
     private Menu menuTool;
     @FXML
@@ -74,8 +79,21 @@ public class MainMenuController implements Initializable
     @FXML
     private void handleExitMenuOption(ActionEvent e)
     {
-        Platform.exit();
-        System.exit(0);
+        MKVToolNix.die(0);
+    }
+
+
+    @FXML
+    private void handlePrefrenceMenuOption(ActionEvent e)
+    {
+        try
+        {
+            Utils.openWindow("Preferences/Preferences.fxml", "Preferences", 1000.0, 600.0);
+        }
+        catch (IOException ex)
+        {
+            ex.printStackTrace();
+        }
     }
 
 

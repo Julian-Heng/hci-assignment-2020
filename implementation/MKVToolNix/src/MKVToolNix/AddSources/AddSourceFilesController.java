@@ -5,15 +5,16 @@
  */
 package MKVToolNix.AddSources;
 
+import MKVToolNix.Utils;
 import java.net.URL;
 import java.util.ResourceBundle;
-import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.MenuButton;
 import javafx.scene.control.MenuItem;
+import javafx.scene.layout.AnchorPane;
 
 
 /**
@@ -23,6 +24,8 @@ import javafx.scene.control.MenuItem;
  */
 public class AddSourceFilesController implements Initializable
 {
+    @FXML
+    private AnchorPane root;
     @FXML
     private Button btnOK;
     @FXML
@@ -50,27 +53,25 @@ public class AddSourceFilesController implements Initializable
     public void initialize(URL url, ResourceBundle rb)
     {
     }
-    
-    
+
+
     @FXML
     private void handleMenuOption(ActionEvent e)
     {
         menuOption.setText(((MenuItem)e.getSource()).getText());
     }
-    
-    
+
+
     @FXML
     private void handleBtnOK(ActionEvent e)
     {
-        Platform.exit();
-        System.exit(0);
+        Utils.closeWindow(root);
     }
-    
-    
+
+
     @FXML
     private void handleBtnCancel(ActionEvent e)
     {
-        Platform.exit();
-        System.exit(0);
+        Utils.closeWindow(root);
     }
 }

@@ -5,9 +5,9 @@
  */
 package MKVToolNix.Preferences;
 
+import MKVToolNix.Utils;
 import java.net.URL;
 import java.util.ResourceBundle;
-import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -21,6 +21,8 @@ import javafx.scene.layout.AnchorPane;
  */
 public class PreferencesController implements Initializable
 {
+    @FXML
+    private AnchorPane root;
     @FXML
     private AnchorPane paneLeft;
     @FXML
@@ -46,15 +48,13 @@ public class PreferencesController implements Initializable
     @FXML
     private void handleBtnOK(ActionEvent e)
     {
-        Platform.exit();
-        System.exit(0);
+        Utils.closeWindow(root);
     }
 
 
     @FXML
     private void handleBtnCancel(ActionEvent e)
     {
-        Platform.exit();
-        System.exit(0);
+        Utils.closeWindow(root);
     }
 }

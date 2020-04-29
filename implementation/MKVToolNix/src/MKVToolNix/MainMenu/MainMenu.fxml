@@ -16,7 +16,7 @@
       <menus>
         <Menu mnemonicParsing="false" text="MKVToolNix GUI">
           <items>
-            <MenuItem mnemonicParsing="false" text="Preferences">
+            <MenuItem fx:id="menuPreferences" mnemonicParsing="false" onAction="#handlePrefrenceMenuOption" text="Preferences">
               <graphic>
                 <ImageView>
                   <Image requestedHeight="16.0" requestedWidth="16.0" url="file:resources/icons/16x16/preferences-other.png" />
