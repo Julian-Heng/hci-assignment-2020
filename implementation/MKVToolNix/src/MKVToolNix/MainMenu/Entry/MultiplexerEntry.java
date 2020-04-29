@@ -37,17 +37,16 @@ public class MultiplexerEntry extends MenuEntry
         menuItems.add(makeMenuItem("Start multiplexing", "resources/icons/16x16/media-playback-start.png"));
         menuItems.add(makeMenuItem("Add to job queue", "resources/icons/16x16/task-delegate.png"));
         menuItems.add(makeMenuItem());
-
-        Menu subMenu = new Menu("Actions for all tabs");
-        subMenu.getItems().addAll(
-                makeMenuItem("Save settings", "resources/icons/16x16/document-save.png"),
-                makeMenuItem(),
-                makeMenuItem("Close", "resources/icons/16x16/document-close.png"),
-                makeMenuItem(),
-                makeMenuItem("Start multiplexing", "resources/icons/16x16/media-playback-start.png"),
-                makeMenuItem("Add to job queue", "resources/icons/16x16/task-delegate.png"));
-        menuItems.add(subMenu);
-
+        menuItems.add(
+                makeMenuItem("Actions for all tabs",
+                             makeMenuItem("Save settings", "resources/icons/16x16/document-save.png"),
+                             makeMenuItem(),
+                             makeMenuItem("Close", "resources/icons/16x16/document-close.png"),
+                             makeMenuItem(),
+                             makeMenuItem("Start multiplexing", "resources/icons/16x16/media-playback-start.png"),
+                             makeMenuItem("Add to job queue", "resources/icons/16x16/task-delegate.png")
+                )
+        );
         menuItems.add(makeMenuItem("Show command line", "resources/icons/16x16/utilities-terminal.png"));
         menuItems.add(makeMenuItem());
         menuItems.add(makeMenuItem("Copy first source file's name to file title"));

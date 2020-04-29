@@ -29,11 +29,12 @@ public class JobQueueEntry extends MenuEntry
 
         menuItems.add(makeMenuItem("Start all pending jobs", "resources/icons/16x16/media-playback-start.png"));
         menuItems.add(makeMenuItem());
-        Menu subMenu = new Menu("Stop job queue", Utils.makeImageView("resources/icons/16x16/media-playback-stop.png"));
-        subMenu.getItems().addAll(
-                makeMenuItem("Stop after all running jobs have finished"),
-                makeMenuItem("Abort all running jobs and stop immediately"));
-        menuItems.add(subMenu);
+        menuItems.add(
+                makeMenuItem("Stop job queue", "resources/icons/16x16/media-playback-stop.png",
+                             makeMenuItem("Stop after all running jobs have finished"),
+                             makeMenuItem("Abort all running jobs and stop immediately")
+                )
+        );
         menuItems.add(makeMenuItem());
         menuItems.add(makeMenuItem("Remove successfully completed jobs"));
         menuItems.add(makeMenuItem("Remove completed jobs"));

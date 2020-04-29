@@ -6,6 +6,7 @@
 package MKVToolNix.MainMenu.Entry;
 
 import MKVToolNix.Utils;
+import java.util.Arrays;
 import java.util.List;
 import javafx.scene.control.Menu;
 import javafx.scene.control.MenuItem;
@@ -136,5 +137,21 @@ public abstract class MenuEntry
     protected MenuItem makeMenuItem(String text, String imgPath)
     {
         return new MenuItem(text, Utils.makeImageView(imgPath));
+    }
+
+
+    protected Menu makeMenuItem(String text, String imgPath, MenuItem... subItems)
+    {
+        Menu item = new Menu(text, Utils.makeImageView(imgPath));
+        item.getItems().addAll(Arrays.<MenuItem>asList(subItems));
+        return item;
+    }
+
+
+    protected Menu makeMenuItem(String text, MenuItem... subItems)
+    {
+        Menu item = new Menu(text);
+        item.getItems().addAll(Arrays.<MenuItem>asList(subItems));
+        return item;
     }
 }

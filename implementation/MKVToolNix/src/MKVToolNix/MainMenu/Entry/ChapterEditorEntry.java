@@ -38,11 +38,12 @@ public class ChapterEditorEntry extends MenuEntry
         menuItems.add(makeMenuItem());
         menuItems.add(makeMenuItem("Close", "resources/icons/16x16/document-close.png"));
         menuItems.add(makeMenuItem());
-        Menu subMenu = new Menu("Actions for all tabs");
-        subMenu.getItems().addAll(
-                makeMenuItem("Save", "resources/icons/16x16/document-save.png"),
-                makeMenuItem("Close", "resources/icons/16x16/document-close.png"));
-        menuItems.add(subMenu);
+        menuItems.add(
+                makeMenuItem("Actions for all tabs",
+                             makeMenuItem("Save", "resources/icons/16x16/document-save.png"),
+                             makeMenuItem("Close", "resources/icons/16x16/document-close.png")
+                )
+        );
         menuItems.add(makeMenuItem());
         menuItems.add(makeMenuItem("Remove chapters from existing Matroska file"));
 
