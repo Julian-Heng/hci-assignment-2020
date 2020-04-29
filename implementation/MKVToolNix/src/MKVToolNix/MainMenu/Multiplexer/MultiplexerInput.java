@@ -6,13 +6,21 @@
 package MKVToolNix.MainMenu.Multiplexer;
 
 import MKVToolNix.CustomAnchorPane;
-import MKVToolNix.Misc.NotImplemented;
+import MKVToolNix.MainMenu.Multiplexer.Property.AudioProperty;
+import MKVToolNix.MainMenu.Multiplexer.Property.GeneralProperty;
+import MKVToolNix.MainMenu.Multiplexer.Property.MiscProperty;
+import MKVToolNix.MainMenu.Multiplexer.Property.SubtitleChapterProperty;
+import MKVToolNix.MainMenu.Multiplexer.Property.TimeDurationProperty;
+import MKVToolNix.MainMenu.Multiplexer.Property.VideoProperty;
+import java.util.HashMap;
+import java.util.Map;
 import javafx.beans.property.ReadOnlyStringWrapper;
 import javafx.fxml.FXML;
+import javafx.scene.control.TitledPane;
 import javafx.scene.control.TreeItem;
 import javafx.scene.control.TreeTableColumn;
 import javafx.scene.control.TreeTableView;
-import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.GridPane;
 
 
 /**
@@ -180,17 +188,19 @@ public class MultiplexerInput extends CustomAnchorPane
     private TreeTableColumn<FileComponent, String> colDelay;
 
     @FXML
-    private AnchorPane panePropGeneral;
+    private TitledPane panePropGeneral;
     @FXML
-    private AnchorPane panePropTimeDuration;
+    private TitledPane panePropTimeDuration;
     @FXML
-    private AnchorPane panePropVideo;
+    private TitledPane panePropVideo;
     @FXML
-    private AnchorPane panePropAudio;
+    private TitledPane panePropAudio;
     @FXML
-    private AnchorPane panePropSubtitleChapter;
+    private TitledPane panePropSubtitleChapter;
     @FXML
-    private AnchorPane panePropMisc;
+    private TitledPane panePropMisc;
+
+    private Map<String, GridPane> properties;
 
 
     public MultiplexerInput()
@@ -200,12 +210,6 @@ public class MultiplexerInput extends CustomAnchorPane
         // Tree Column View
         TreeItem<FileComponent> root = new TreeItem<>(new FileComponent(""));
         root.setExpanded(true);
-
-        // Dummy item
-        TreeItem<FileComponent> dummy = new TreeItem<>(new FileComponent("file.mkv"));
-        dummy.getChildren().add(new TreeItem<>(new FileComponent("VC-1", "Video", true, "eng", "", 0, true, false, "", "1920x1080 pixels", "VC1-1080p23.976-LPCM7.1.mkv", "/dev/null", "", "")));
-        dummy.getChildren().add(new TreeItem<>(new FileComponent("PCM", "Audio", true, "eng", "", 1, true, false, "", "48000 Hz, 8 channels, 16 bits per sample", "VC1-1080p23.976-LPCM7.1.mkv", "/dev/null", "", "")));
-        root.getChildren().add(dummy);
 
         colType.setCellValueFactory(p -> makeString(p.getValue().getValue().getType()));
         colCodec.setCellValueFactory(p -> makeString(p.getValue().getValue().getCodec()));
@@ -225,13 +229,27 @@ public class MultiplexerInput extends CustomAnchorPane
         treeEntries.setRoot(root);
         treeEntries.setShowRoot(false);
 
+        // Dummy item
+        TreeItem<FileComponent> dummy = new TreeItem<>(new FileComponent("file.mkv"));
+        dummy.getChildren().add(new TreeItem<>(new FileComponent("VC-1", "Video", true, "eng", "", 0, true, false, "", "1920x1080 pixels", "VC1-1080p23.976-LPCM7.1.mkv", "/dev/null", "", "")));
+        dummy.getChildren().add(new TreeItem<>(new FileComponent("PCM", "Audio", true, "eng", "", 1, true, false, "", "48000 Hz, 8 channels, 16 bits per sample", "VC1-1080p23.976-LPCM7.1.mkv", "/dev/null", "", "")));
+        root.getChildren().add(dummy);
+
         // Properties
-        panePropGeneral.getChildren().add(new NotImplemented(""));
-        panePropTimeDuration.getChildren().add(new NotImplemented(""));
-        panePropVideo.getChildren().add(new NotImplemented(""));
-        panePropAudio.getChildren().add(new NotImplemented(""));
-        panePropSubtitleChapter.getChildren().add(new NotImplemented(""));
-        panePropMisc.getChildren().add(new NotImplemented(""));
+        properties = new HashMap<>();
+        properties.put("General", new GeneralProperty());
+        properties.put("TimeDuration", new TimeDurationProperty());
+        properties.put("Video", new VideoProperty());
+        properties.put("Audio", new AudioProperty());
+        properties.put("SubtitleChapter", new SubtitleChapterProperty());
+        properties.put("Misc", new MiscProperty());
+
+        panePropGeneral.setContent(properties.get("General"));
+        panePropTimeDuration.setContent(properties.get("TimeDuration"));
+        panePropVideo.setContent(properties.get("Video"));
+        panePropAudio.setContent(properties.get("Audio"));
+        panePropSubtitleChapter.setContent(properties.get("SubtitleChapter"));
+        panePropMisc.setContent(properties.get("Misc"));
     }
 
 

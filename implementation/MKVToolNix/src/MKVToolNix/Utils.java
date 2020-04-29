@@ -8,6 +8,7 @@ package MKVToolNix;
 import java.io.File;
 import java.io.IOException;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
@@ -47,5 +48,20 @@ public class Utils
     public static void closeWindow(AnchorPane root)
     {
         ((Stage)root.getScene().getWindow()).close();
+    }
+
+
+    public static void fillAnchorPane(Node n)
+    {
+        fillAnchorPane(n, 0.0);
+    }
+
+
+    public static void fillAnchorPane(Node n, double v)
+    {
+        AnchorPane.setTopAnchor(n, v);
+        AnchorPane.setBottomAnchor(n, v);
+        AnchorPane.setLeftAnchor(n, v);
+        AnchorPane.setRightAnchor(n, v);
     }
 }

@@ -47,60 +47,12 @@
               <children>
                 <Accordion layoutX="-53.0" layoutY="30.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                   <panes>
-                    <TitledPane animated="false" text="General options">
-                      <content>
-                        <AnchorPane>
-                          <children>
-                            <AnchorPane fx:id="panePropGeneral" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
-                          </children>
-                        </AnchorPane>
-                      </content>
-                    </TitledPane>
-                    <TitledPane animated="false" text="Timestamps and Default Durations">
-                      <content>
-                        <AnchorPane>
-                          <children>
-                            <AnchorPane fx:id="panePropTimeDuration" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
-                          </children>
-                        </AnchorPane>
-                      </content>
-                    </TitledPane>
-                    <TitledPane animated="false" text="Video Properties">
-                      <content>
-                        <AnchorPane>
-                          <children>
-                            <AnchorPane fx:id="panePropVideo" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
-                          </children>
-                        </AnchorPane>
-                      </content>
-                    </TitledPane>
-                    <TitledPane animated="false" text="Audio Properties">
-                      <content>
-                        <AnchorPane>
-                          <children>
-                            <AnchorPane fx:id="panePropAudio" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
-                          </children>
-                        </AnchorPane>
-                      </content>
-                    </TitledPane>
-                    <TitledPane animated="false" text="Subtitle and Chapter Properties">
-                      <content>
-                        <AnchorPane>
-                          <children>
-                            <AnchorPane fx:id="panePropSubtitleChapter" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
-                          </children>
-                        </AnchorPane>
-                      </content>
-                    </TitledPane>
-                    <TitledPane animated="false" text="Miscellaneous">
-                      <content>
-                        <AnchorPane>
-                          <children>
-                            <AnchorPane fx:id="panePropMisc" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
-                          </children>
-                        </AnchorPane>
-                      </content>
-                    </TitledPane>
+                    <TitledPane fx:id="panePropGeneral" text="General options" />
+                    <TitledPane fx:id="panePropTimeDuration" text="Timestamps and Default Durations" />
+                    <TitledPane fx:id="panePropVideo" text="Video Properties" />
+                    <TitledPane fx:id="panePropAudio" text="Audio Properties" />
+                    <TitledPane fx:id="panePropSubtitleChapter" text="Subtitle and Chapter Properties" />
+                    <TitledPane fx:id="panePropMisc" text="Miscellaneous" />
                   </panes>
                 </Accordion>
               </children>
