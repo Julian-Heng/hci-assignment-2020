@@ -93,7 +93,6 @@ public class MainMenuController implements Initializable
         else
             throw new Exception("Uh oh, stinky");
 
-        //setActive(btnMap.get(key));
         if (active != null)
             active.deactivate();
         active = menus.get(key);
