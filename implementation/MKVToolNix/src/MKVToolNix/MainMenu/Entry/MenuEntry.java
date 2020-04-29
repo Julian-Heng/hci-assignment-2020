@@ -38,10 +38,7 @@ public abstract class MenuEntry
         this.menu = menu;
         this.content = content;
 
-        AnchorPane.setTopAnchor(this.content, 0.0);
-        AnchorPane.setBottomAnchor(this.content, 0.0);
-        AnchorPane.setLeftAnchor(this.content, 0.0);
-        AnchorPane.setRightAnchor(this.content, 0.0);
+        Utils.fillAnchorPane(this.content);
     }
 
 

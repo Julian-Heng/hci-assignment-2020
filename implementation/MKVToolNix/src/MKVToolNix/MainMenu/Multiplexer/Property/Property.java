@@ -90,8 +90,7 @@ public abstract class Property extends GridPane
         menuNode.getItems().addAll(makeMenuItems(menuNode, items));
 
         labelNode = new Label(label + ":");
-        Utils.fillAnchorPane(menuNode);
-        options.add(new Entry(labelNode, menuNode));
+        addOption(labelNode, menuNode);
     }
 
 
@@ -99,12 +98,9 @@ public abstract class Property extends GridPane
     {
         Label labelNode;
         MenuButton menuNode = new MenuButton(items[select]);
-
         menuNode.getItems().addAll(makeMenuItems(menuNode, items));
-
         labelNode = new Label(label + ":");
-        Utils.fillAnchorPane(menuNode);
-        options.add(new Entry(labelNode, menuNode));
+        addOption(labelNode, menuNode);
     }
 
 
@@ -112,45 +108,28 @@ public abstract class Property extends GridPane
     {
         Label labelNode;
         ComboBox menuNode = new ComboBox();
-
         menuNode.setEditable(true);
         menuNode.getItems().addAll(Arrays.<String>asList(items));
-
         labelNode = new Label(label + ":");
-        Utils.fillAnchorPane(menuNode);
-        options.add(new Entry(labelNode, menuNode));
+        addOption(labelNode, menuNode);
     }
 
 
     protected void addTextField(String label)
     {
-        Label labelNode;
-        TextField textNode;
-
-        textNode = new TextField();
-        labelNode = new Label(label + ":");
-        Utils.fillAnchorPane(textNode);
-        options.add(new Entry(labelNode, textNode));
+        addOption(new Label(label + ":"), new TextField());
     }
 
 
     protected void addFileSelector(String label)
     {
-        Label labelNode;
-        AnchorPane contentNode;
-
-        labelNode = new Label(label + ":");
-        contentNode = new FileSelector();
-        Utils.fillAnchorPane(contentNode);
-        options.add(new Entry(labelNode, contentNode));
+        addOption(new Label(label + ":"), new FileSelector());
     }
 
 
     protected void addCheckbox(String label)
     {
-        CheckBox checkNode;
-        checkNode = new CheckBox(label);
-        options.add(new Entry(null, checkNode));
+        addOption(null, new CheckBox(label));
     }
 
 
@@ -161,8 +140,7 @@ public abstract class Property extends GridPane
         {
             RadioButton btn = new RadioButton(i.getItem1());
             btn.setToggleGroup(group);
-            Utils.fillAnchorPane(i.getItem2());
-            options.add(new Entry(btn, i.getItem2()));
+            addOption(btn, i.getItem2());
         }
 
     }
@@ -198,6 +176,16 @@ public abstract class Property extends GridPane
 
             count++;
         }
+    }
+
+
+    private void addOption(Node n1, Node n2)
+    {
+        if (n1 != null)
+            Utils.fillAnchorPane(n1);
+        if (n2 != null)
+            Utils.fillAnchorPane(n2);
+        options.add(new Entry(n1, n2));
     }
 
 

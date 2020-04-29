@@ -6,6 +6,7 @@
 package MKVToolNix.Preferences.ExecutingActions;
 
 import MKVToolNix.CustomAnchorPane;
+import MKVToolNix.Utils;
 import java.util.HashMap;
 import java.util.Map;
 import javafx.beans.value.ObservableValue;
@@ -313,10 +314,7 @@ public class ExecutingActions extends CustomAnchorPane
     {
         AnchorPane pane = mapPaneSpecific.get(menuType.getText());
         paneSpecific.getChildren().clear();
-        AnchorPane.setTopAnchor(pane, 0.0);
-        AnchorPane.setBottomAnchor(pane, 0.0);
-        AnchorPane.setLeftAnchor(pane, 0.0);
-        AnchorPane.setRightAnchor(pane, 0.0);
+        Utils.fillAnchorPane(pane);
         paneSpecific.getChildren().add(pane);
     }
 

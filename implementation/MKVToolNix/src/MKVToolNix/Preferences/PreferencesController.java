@@ -37,10 +37,7 @@ public class PreferencesController implements Initializable
     public void initialize(URL url, ResourceBundle rb)
     {
         AnchorPane list = new PreferencesList(paneRight);
-        AnchorPane.setTopAnchor(list, 0.0);
-        AnchorPane.setBottomAnchor(list, 0.0);
-        AnchorPane.setLeftAnchor(list, 0.0);
-        AnchorPane.setRightAnchor(list, 0.0);
+        Utils.fillAnchorPane(list);
         paneLeft.getChildren().add(list);
     }
 
