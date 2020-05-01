@@ -7,6 +7,8 @@ package MKVToolNix;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.List;
+import java.util.Random;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
@@ -35,13 +37,19 @@ public class Utils
     }
 
 
-    public static void openWindow(String fxmlPath, String title, double width, double height) throws IOException
+    public static Stage openWindow(String fxmlPath, String title, double width, double height) throws IOException
     {
-        Parent root = FXMLLoader.load(MKVToolNix.class.getResource(fxmlPath));
+        Parent p = FXMLLoader.load(MKVToolNix.class.getResource(fxmlPath));
+        return openWindow(p, title, width, height);
+    }
+
+
+    public static Stage openWindow(Parent parent, String title, double width, double height)
+    {
         Stage stage = new Stage();
         stage.setTitle(title);
-        stage.setScene(new Scene(root, width, height));
-        stage.show();
+        stage.setScene(new Scene(parent, width, height));
+        return stage;
     }
 
 
@@ -63,5 +71,17 @@ public class Utils
         AnchorPane.setBottomAnchor(n, v);
         AnchorPane.setLeftAnchor(n, v);
         AnchorPane.setRightAnchor(n, v);
+    }
+
+
+    public static String getFileExtension(String fname)
+    {
+        return fname.substring(fname.lastIndexOf(".") + 1);
+    }
+
+
+    public static <T> T getRandomFromList(List<T> l)
+    {
+        return l.get((new Random()).nextInt(l.size()));
     }
 }

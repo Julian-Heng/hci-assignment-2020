@@ -157,6 +157,8 @@ public class ExecutingActions extends CustomAnchorPane
     @FXML
     private Button btnExecute;
     @FXML
+    private AnchorPane paneOptions;
+    @FXML
     private AnchorPane paneSpecific;
 
     private Map<String, AnchorPane> mapPaneSpecific;
@@ -184,6 +186,8 @@ public class ExecutingActions extends CustomAnchorPane
         listActions.getSelectionModel()
                 .selectedItemProperty()
                 .addListener((ObservableValue<? extends String> obs, String oldValue, String newValue) -> updateActionPane(actions.get(newValue)));
+
+        paneAction.setDisable(true);
     }
 
 
@@ -213,6 +217,7 @@ public class ExecutingActions extends CustomAnchorPane
     private void handleChkActive(ActionEvent e)
     {
         getSelectedEntry().setActive(chkActive.isSelected());
+        updateActionPane(getSelectedEntry());
     }
 
 
@@ -292,7 +297,9 @@ public class ExecutingActions extends CustomAnchorPane
 
     private void updateActionPane(ActionEntry e)
     {
-        if (e == null)
+        if (e != null)
+            paneAction.setDisable(false);
+        else
         {
             paneAction.setDisable(true);
             return;
@@ -305,7 +312,7 @@ public class ExecutingActions extends CustomAnchorPane
         chkAfterJobError.setSelected(e.getAfterJobError());
         chkAfterJobQueueStop.setSelected(e.getAfterJobQueueStop());
 
-        paneAction.setDisable(!e.getActive());
+        paneOptions.setDisable(!e.getActive());
         updateSpecificPane();
     }
 

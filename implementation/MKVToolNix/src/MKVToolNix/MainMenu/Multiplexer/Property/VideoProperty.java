@@ -5,6 +5,7 @@
  */
 package MKVToolNix.MainMenu.Multiplexer.Property;
 
+import MKVToolNix.MainMenu.Multiplexer.FileComponent;
 import MKVToolNix.Misc.Pair;
 
 
@@ -24,5 +25,17 @@ public class VideoProperty extends Property
         addDropdownMenu("NALU size length", "Don't change", "Force 2 bytes", "Force 4 bytes");
 
         init();
+    }
+
+
+    @Override
+    public void update(FileComponent f)
+    {
+        if (f.getType().equals("Video"))
+            setDisabled(false);
+        else if (f.getType().equals("Audio"))
+            setDisabled(true);
+        else
+            setDisabled(true);
     }
 }

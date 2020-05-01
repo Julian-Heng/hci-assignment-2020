@@ -26,6 +26,7 @@ import javafx.scene.control.Menu;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.ToggleButton;
 import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
 
 
 /**
@@ -71,8 +72,15 @@ public class MainMenuController implements Initializable
         menus.put(tglbtnChapterEditor.getText(), new ChapterEditorEntry(tglbtnChapterEditor.getText(), tglbtnChapterEditor, paneMenu, menuTool));
         menus.put(tglbtnJobQueue.getText(), new JobQueueEntry(tglbtnJobQueue.getText(), tglbtnJobQueue, paneMenu, menuTool));
         menus.put(tglbtnJobOutput.getText(), new JobOutputEntry(tglbtnJobOutput.getText(), tglbtnJobOutput, paneMenu, menuTool));
+    }
 
-        (active = menus.get(tglbtnMultiplexer.getText())).activate();
+
+    public void setActive(String key)
+    {
+        if (active != null)
+            active.deactivate();
+        active = menus.get(key);
+        active.activate();
     }
 
 
@@ -88,7 +96,8 @@ public class MainMenuController implements Initializable
     {
         try
         {
-            Utils.openWindow("Preferences/Preferences.fxml", "Preferences", 1000.0, 600.0);
+            Stage s = Utils.openWindow("Preferences/Preferences.fxml", "Preferences", 1000.0, 600.0);
+            s.show();
         }
         catch (IOException ex)
         {
@@ -111,9 +120,6 @@ public class MainMenuController implements Initializable
         else
             throw new Exception("Uh oh, stinky");
 
-        if (active != null)
-            active.deactivate();
-        active = menus.get(key);
-        active.activate();
+        setActive(key);
     }
 }

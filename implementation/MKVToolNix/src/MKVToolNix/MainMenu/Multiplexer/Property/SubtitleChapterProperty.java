@@ -5,6 +5,8 @@
  */
 package MKVToolNix.MainMenu.Multiplexer.Property;
 
+import MKVToolNix.MainMenu.Multiplexer.FileComponent;
+
 
 /**
  *
@@ -15,9 +17,21 @@ public class SubtitleChapterProperty extends Property
     public SubtitleChapterProperty()
     {
         super();
-        
+
         addFileSelector("Character set");
-        
+
         init();
+    }
+
+
+    @Override
+    public void update(FileComponent f)
+    {
+        if (f.getType().equals("Video"))
+            setDisabled(true);
+        else if (f.getType().equals("Audio"))
+            setDisabled(false);
+        else
+            setDisabled(true);
     }
 }

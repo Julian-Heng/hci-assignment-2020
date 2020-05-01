@@ -9,18 +9,23 @@ import MKVToolNix.CustomAnchorPane;
 import MKVToolNix.MainMenu.Multiplexer.Property.AudioProperty;
 import MKVToolNix.MainMenu.Multiplexer.Property.GeneralProperty;
 import MKVToolNix.MainMenu.Multiplexer.Property.MiscProperty;
+import MKVToolNix.MainMenu.Multiplexer.Property.Property;
 import MKVToolNix.MainMenu.Multiplexer.Property.SubtitleChapterProperty;
 import MKVToolNix.MainMenu.Multiplexer.Property.TimeDurationProperty;
 import MKVToolNix.MainMenu.Multiplexer.Property.VideoProperty;
+import MKVToolNix.Utils;
+import java.util.Arrays;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 import javafx.beans.property.ReadOnlyStringWrapper;
+import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
 import javafx.scene.control.TitledPane;
 import javafx.scene.control.TreeItem;
 import javafx.scene.control.TreeTableColumn;
 import javafx.scene.control.TreeTableView;
-import javafx.scene.layout.GridPane;
 
 
 /**
@@ -29,133 +34,6 @@ import javafx.scene.layout.GridPane;
  */
 public class MultiplexerInput extends CustomAnchorPane
 {
-    private static class FileComponent
-    {
-        private String codec;
-        private String type;
-        private Boolean copy;
-        private String language;
-        private String name;
-        private Integer ID;
-        private Boolean defaultTrackOutput;
-        private Boolean forced;
-        private String charSet;
-        private String properties;
-        private String sourceFile;
-        private String sourceDir;
-        private String program;
-        private String delay;
-
-
-        public FileComponent(String name)
-        {
-            type = name;
-        }
-
-
-        public FileComponent(String codec, String type, Boolean copy, String language, String name, int ID, Boolean defaultTrackOutput, Boolean forced, String charSet, String properties, String sourceFile, String sourceDir, String program, String delay)
-        {
-            this.codec = codec;
-            this.type = type;
-            this.copy = copy;
-            this.language = language;
-            this.name = name;
-            this.ID = ID;
-            this.defaultTrackOutput = defaultTrackOutput;
-            this.forced = forced;
-            this.charSet = charSet;
-            this.properties = properties;
-            this.sourceFile = sourceFile;
-            this.sourceDir = sourceDir;
-            this.program = program;
-            this.delay = delay;
-        }
-
-
-        public String getCodec()
-        {
-            return codec;
-        }
-
-
-        public String getType()
-        {
-            return type;
-        }
-
-
-        public Boolean getCopy()
-        {
-            return copy;
-        }
-
-
-        public String getLanguage()
-        {
-            return language;
-        }
-
-
-        public String getName()
-        {
-            return name;
-        }
-
-
-        public Integer getID()
-        {
-            return ID;
-        }
-
-
-        public Boolean getDefaultTrackOutput()
-        {
-            return defaultTrackOutput;
-        }
-
-
-        public Boolean getForced()
-        {
-            return forced;
-        }
-
-
-        public String getCharSet()
-        {
-            return charSet;
-        }
-
-
-        public String getProperties()
-        {
-            return properties;
-        }
-
-
-        public String getSourceFile()
-        {
-            return sourceFile;
-        }
-
-
-        public String getSourceDir()
-        {
-            return sourceDir;
-        }
-
-
-        public String getProgram()
-        {
-            return program;
-        }
-
-
-        public String getDelay()
-        {
-            return delay;
-        }
-    }
-
     @FXML
     private TreeTableView<FileComponent> treeEntries;
     @FXML
@@ -200,7 +78,11 @@ public class MultiplexerInput extends CustomAnchorPane
     @FXML
     private TitledPane panePropMisc;
 
-    private Map<String, GridPane> properties;
+    private Map<String, Property> properties;
+
+    private List<String> fakeTitles;
+    private List<FileComponent> fakeVideoFiles;
+    private List<FileComponent> fakeAudioFiles;
 
 
     public MultiplexerInput()
@@ -229,11 +111,12 @@ public class MultiplexerInput extends CustomAnchorPane
         treeEntries.setRoot(root);
         treeEntries.setShowRoot(false);
 
-        // Dummy item
-        TreeItem<FileComponent> dummy = new TreeItem<>(new FileComponent("file.mkv"));
-        dummy.getChildren().add(new TreeItem<>(new FileComponent("VC-1", "Video", true, "eng", "", 0, true, false, "", "1920x1080 pixels", "VC1-1080p23.976-LPCM7.1.mkv", "/dev/null", "", "")));
-        dummy.getChildren().add(new TreeItem<>(new FileComponent("PCM", "Audio", true, "eng", "", 1, true, false, "", "48000 Hz, 8 channels, 16 bits per sample", "VC1-1080p23.976-LPCM7.1.mkv", "/dev/null", "", "")));
-        root.getChildren().add(dummy);
+        treeEntries.getSelectionModel()
+                .selectedItemProperty()
+                .addListener((ObservableValue<? extends TreeItem<FileComponent>> obs, TreeItem<FileComponent> oldValue, TreeItem<FileComponent> newValue) ->
+                {
+                    properties.forEach((k, v) -> v.update(newValue.getValue()));
+                });
 
         // Properties
         properties = new HashMap<>();
@@ -250,6 +133,68 @@ public class MultiplexerInput extends CustomAnchorPane
         panePropAudio.setContent(properties.get("Audio"));
         panePropSubtitleChapter.setContent(properties.get("SubtitleChapter"));
         panePropMisc.setContent(properties.get("Misc"));
+
+        fakeTitles = Arrays.<String>asList("File1", "File2", "File3", "File4", "File5", "Fil1", "Fil2", "Fil3", "Fil4", "Fil5");
+        fakeVideoFiles = Arrays.<FileComponent>asList(
+                new FileComponent("VC-1", "Video", true, "eng", "", 0, true, false, "", "1920x1080 pixels", "VC1-1080p23.976-LPCM7.1.mkv", "/dev/null", "", ""),
+                new FileComponent("MP4", "Video", true, "eng", "", 0, true, false, "", "1600x900 pixels", "VC1-1080p23.976-LPCM7.1.mkv", "/dev/null", "", ""),
+                new FileComponent("VC-1", "Video", true, "fre", "", 0, true, false, "", "1920x1080 pixels", "VC1-1080p23.976-LPCM7.1.mkv", "/dev/null", "", ""),
+                new FileComponent("VC-2", "Video", true, "rus", "", 0, true, false, "", "1440x900 pixels", "VC1-1080p23.976-LPCM7.1.mkv", "/dev/null", "", ""),
+                new FileComponent("VC-3", "Video", true, "eng", "", 0, true, false, "", "1920x1080 pixels", "VC1-1080p23.976-LPCM7.1.mkv", "/dev/null", "", ""),
+                new FileComponent("VC-2", "Video", true, "chn", "", 0, true, false, "", "1920x1080 pixels", "VC1-1080p23.976-LPCM7.1.mkv", "/dev/null", "", ""),
+                new FileComponent("AVI", "Video", true, "eng", "", 0, true, false, "", "1280x720 pixels", "VC1-1080p23.976-LPCM7.1.mkv", "/dev/null", "", ""),
+                new FileComponent("Microsoft", "Video", true, "eng", "", 0, true, false, "", "1920x1080 pixels", "VC1-1080p23.976-LPCM7.1.mkv", "/dev/null", "", ""),
+                new FileComponent("Apple", "Video", true, "eng", "", 0, true, false, "", "1920x1080 pixels", "VC1-1080p23.976-LPCM7.1.mkv", "/dev/null", "", ""),
+                new FileComponent("HEVC", "Video", true, "eng", "", 0, true, false, "", "1920x1080 pixels", "VC1-1080p23.976-LPCM7.1.mkv", "/dev/null", "", "")
+        );
+        fakeAudioFiles = Arrays.<FileComponent>asList(
+                new FileComponent("PCM", "Audio", true, "eng", "", 1, true, false, "", "48000 Hz, 8 channels, 16 bits per sample", "VC1-1080p23.976-LPCM7.1.mkv", "/dev/null", "", ""),
+                new FileComponent("MP3", "Audio", true, "jpn", "", 1, true, false, "", "24000 Hz, 7 channels, 8 bits per sample", "VC1-1080p23.976-LPCM7.1.mkv", "/dev/null", "", ""),
+                new FileComponent("MP3", "Audio", true, "jpn", "", 1, true, false, "", "48000 Hz, 6 channels, 8 bits per sample", "VC1-1080p23.976-LPCM7.1.mkv", "/dev/null", "", ""),
+                new FileComponent("PCM", "Audio", true, "eng", "", 1, true, false, "", "96000 Hz, 5 channels, 4 bits per sample", "VC1-1080p23.976-LPCM7.1.mkv", "/dev/null", "", ""),
+                new FileComponent("OGG", "Audio", true, "rus", "", 1, true, false, "", "48000 Hz, 4 channels, 4 bits per sample", "VC1-1080p23.976-LPCM7.1.mkv", "/dev/null", "", ""),
+                new FileComponent("OGG", "Audio", true, "ger", "", 1, true, false, "", "48000 Hz, 3 channels, 32 bits per sample", "VC1-1080p23.976-LPCM7.1.mkv", "/dev/null", "", ""),
+                new FileComponent("OPUS", "Audio", true, "eng", "", 1, true, false, "", "48000 Hz, 2 channels, 64 bits per sample", "VC1-1080p23.976-LPCM7.1.mkv", "/dev/null", "", ""),
+                new FileComponent("MP3", "Audio", true, "eng", "", 1, true, false, "", "48000 Hz, 1 channels, 16 bits per sample", "VC1-1080p23.976-LPCM7.1.mkv", "/dev/null", "", ""),
+                new FileComponent("MP2", "Audio", true, "esp", "", 1, true, false, "", "48000 Hz, 1 channels, 16 bits per sample", "VC1-1080p23.976-LPCM7.1.mkv", "/dev/null", "", ""),
+                new FileComponent("PCM", "Audio", true, "swe", "", 1, true, false, "", "8000 Hz, 1 channels, 128 bits per sample", "VC1-1080p23.976-LPCM7.1.mkv", "/dev/null", "", ""),
+                new FileComponent("PCM", "Audio", true, "eng", "", 1, true, false, "", "16000 Hz, 2 channels, 16 bits per sample", "VC1-1080p23.976-LPCM7.1.mkv", "/dev/null", "", ""),
+                new FileComponent("PCM", "Audio", true, "eng", "", 1, true, false, "", "48000 Hz, 8 channels, 16 bits per sample", "VC1-1080p23.976-LPCM7.1.mkv", "/dev/null", "", "")
+        );
+    }
+
+
+    public Boolean hasNoEntries()
+    {
+        return treeEntries.getRoot().getChildren().isEmpty();
+    }
+
+
+    public void addRandomVideo(String ext)
+    {
+        addEntry(
+                new FileComponent(Utils.<String>getRandomFromList(fakeTitles) + "." + ext),
+                Utils.<FileComponent>getRandomFromList(fakeVideoFiles),
+                Utils.<FileComponent>getRandomFromList(fakeAudioFiles)
+        );
+    }
+
+
+    public void addRandomAudio(String ext)
+    {
+        addEntry(
+                new FileComponent(Utils.<String>getRandomFromList(fakeTitles) + "." + ext),
+                Utils.<FileComponent>getRandomFromList(fakeAudioFiles)
+        );
+    }
+
+
+    private void addEntry(FileComponent rootEntry, FileComponent... children)
+    {
+        TreeItem<FileComponent> e = new TreeItem<>(rootEntry);
+        e.getChildren().addAll(Arrays.<FileComponent>asList(children).stream().map(TreeItem<FileComponent>::new).collect(Collectors.toList()));
+        e.setExpanded(true);
+        treeEntries.getRoot().getChildren().add(e);
     }
 
 

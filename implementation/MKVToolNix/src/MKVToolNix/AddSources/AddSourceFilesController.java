@@ -7,7 +7,9 @@ package MKVToolNix.AddSources;
 
 import MKVToolNix.Utils;
 import java.net.URL;
+import java.util.List;
 import java.util.ResourceBundle;
+import java.util.stream.Collectors;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -52,6 +54,14 @@ public class AddSourceFilesController implements Initializable
     @Override
     public void initialize(URL url, ResourceBundle rb)
     {
+    }
+
+
+    public void setJobs(List<String> jobs)
+    {
+        menuFileList.getItems().clear();
+        menuFileList.setText(jobs.isEmpty() ? "" : jobs.get(0));
+        menuFileList.getItems().setAll(jobs.stream().map(MenuItem::new).collect(Collectors.toList()));
     }
 
 

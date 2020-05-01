@@ -22,17 +22,13 @@ public class MKVToolNix extends Application
     @Override
     public void start(Stage stage) throws Exception
     {
-        //Parent root = FXMLLoader.load(getClass().getResource("StartMenu/StartMenu.fxml"));
-        //Parent root = FXMLLoader.load(getClass().getResource("AddSources/AddSourceFiles.fxml"));
-        Parent root = FXMLLoader.load(getClass().getResource("MainMenu/MainMenu.fxml"));
-        //Parent root = FXMLLoader.load(getClass().getResource("Preferences/Preferences.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("StartMenu/StartMenu.fxml"));
 
         Scene scene = new Scene(root);
 
         stage.setScene(scene);
         stage.setTitle("MKVToolNix - Gooey Edition");
-        //stage.setResizable(false);
-
+        stage.setResizable(false);
         stage.setOnCloseRequest((e) -> MKVToolNix.die(0));
 
         stage.show();

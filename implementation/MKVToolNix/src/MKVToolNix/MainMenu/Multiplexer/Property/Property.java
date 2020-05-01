@@ -5,6 +5,7 @@
  */
 package MKVToolNix.MainMenu.Multiplexer.Property;
 
+import MKVToolNix.MainMenu.Multiplexer.FileComponent;
 import MKVToolNix.Misc.Pair;
 import MKVToolNix.Utils;
 import java.util.ArrayList;
@@ -82,6 +83,11 @@ public abstract class Property extends GridPane
     }
 
 
+    public void update(FileComponent f)
+    {
+    }
+
+
     protected void addDropdownMenu(String label, String... items)
     {
         Label labelNode;
@@ -142,7 +148,6 @@ public abstract class Property extends GridPane
             btn.setToggleGroup(group);
             addOption(btn, i.getItem2());
         }
-
     }
 
 

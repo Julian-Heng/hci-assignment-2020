@@ -9,7 +9,7 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane id="AnchorPane" maxHeight="337.0" maxWidth="346.0" minHeight="337.0" minWidth="346.0" prefHeight="337.0" prefWidth="346.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="MKVToolNix.AddSources.AddSourceFilesController">
+<AnchorPane id="AnchorPane" fx:id="root" maxHeight="337.0" maxWidth="346.0" minHeight="337.0" minWidth="346.0" prefHeight="337.0" prefWidth="346.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="MKVToolNix.AddSources.AddSourceFilesController">
   <children>
     <Text layoutX="11.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Adding, appending or adding as additional parts" textAlignment="JUSTIFY" AnchorPane.leftAnchor="16.0" AnchorPane.rightAnchor="16.0" AnchorPane.topAnchor="16.0" />
     <Line endX="212.5" layoutX="115.0" layoutY="42.0" startX="-100.0" AnchorPane.leftAnchor="16.0" AnchorPane.rightAnchor="16.0" AnchorPane.topAnchor="40.0" />
