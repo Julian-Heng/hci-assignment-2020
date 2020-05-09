@@ -61,7 +61,12 @@ public class PredefinedValues extends CustomAnchorPane
         @FXML
         private void handleBtnAdd(ActionEvent e)
         {
-            listValues.getItems().add(listValues.getItems().size(), "New value");
+            String base = "New value";
+            String name = base;
+            int i = 2;
+            while (listValues.getItems().contains(name))
+                name = String.format("%s (%d)", base, i++);
+            listValues.getItems().add(listValues.getItems().size(), name);
         }
 
 

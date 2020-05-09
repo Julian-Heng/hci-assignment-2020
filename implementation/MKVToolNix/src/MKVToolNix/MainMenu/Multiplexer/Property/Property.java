@@ -142,12 +142,12 @@ public abstract class Property extends GridPane
     protected void addRadioChoice(Pair<String, Node>... items)
     {
         ToggleGroup group = new ToggleGroup();
-        for (Pair<String, Node> i : items)
+        Arrays.<Pair<String, Node>>asList(items).forEach(i ->
         {
             RadioButton btn = new RadioButton(i.getKey());
             btn.setToggleGroup(group);
             addOption(btn, i.getValue());
-        }
+        });
     }
 
 
