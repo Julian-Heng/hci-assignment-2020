@@ -10,6 +10,8 @@ import MKVToolNix.MainMenu.MainMenuController;
 import MKVToolNix.Utils;
 import java.io.IOException;
 import java.net.URL;
+import java.util.Arrays;
+import java.util.List;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -22,8 +24,10 @@ import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.ListView;
 import javafx.scene.control.SelectionMode;
+import javafx.scene.control.Tooltip;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+import javafx.util.Pair;
 
 
 /**
@@ -80,6 +84,17 @@ public class StartMenuController implements Initializable
                 return null;
             }
         });
+
+        List<Pair<Button, String>> tmp = Arrays.<Pair<Button, String>>asList(
+                new Pair(btnMultiplexer, "Merge files together with the multiplexer tool"),
+                new Pair(btnInfoTool, "Display information about files"),
+                new Pair(btnHeaderEditor, "Edit file's header information"),
+                new Pair(btnChapterEditor, "Edit file's chapter information"),
+                new Pair(btnJobQueue, "View the current job queue"),
+                new Pair(btnJobOutput, "View the completed job output")
+        );
+
+        tmp.forEach(i -> i.getKey().setTooltip(new Tooltip(i.getValue())));
     }
 
 
