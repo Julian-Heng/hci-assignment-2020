@@ -6,7 +6,7 @@
 package MKVToolNix.MainMenu.Multiplexer.Property;
 
 import MKVToolNix.MainMenu.Multiplexer.FileComponent;
-import MKVToolNix.Misc.Pair;
+import javafx.util.Pair;
 
 
 /**

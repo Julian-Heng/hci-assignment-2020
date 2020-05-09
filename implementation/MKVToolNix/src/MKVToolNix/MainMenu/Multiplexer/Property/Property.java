@@ -6,7 +6,6 @@
 package MKVToolNix.MainMenu.Multiplexer.Property;
 
 import MKVToolNix.MainMenu.Multiplexer.FileComponent;
-import MKVToolNix.Misc.Pair;
 import MKVToolNix.Utils;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -28,6 +27,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Priority;
+import javafx.util.Pair;
 
 
 /**
@@ -144,9 +144,9 @@ public abstract class Property extends GridPane
         ToggleGroup group = new ToggleGroup();
         for (Pair<String, Node> i : items)
         {
-            RadioButton btn = new RadioButton(i.getItem1());
+            RadioButton btn = new RadioButton(i.getKey());
             btn.setToggleGroup(group);
-            addOption(btn, i.getItem2());
+            addOption(btn, i.getValue());
         }
     }
 
