@@ -10,17 +10,20 @@ import MKVToolNix.CustomAnchorPane;
 import MKVToolNix.MKVToolNix;
 import MKVToolNix.Misc.NotImplemented;
 import MKVToolNix.Utils;
-import java.io.File;
 import java.io.IOException;
 import java.util.stream.Collectors;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
+import javafx.scene.control.Button;
+import javafx.scene.control.SplitMenuButton;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
+import javafx.scene.control.TextField;
 import javafx.scene.input.DragEvent;
 import javafx.scene.input.Dragboard;
 import javafx.scene.input.TransferMode;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
 
@@ -38,6 +41,12 @@ public class Multiplexer extends CustomAnchorPane
         private Tab tabOutput;
         @FXML
         private Tab tabAttachment;
+        @FXML
+        private TextField txtDestination;
+        @FXML
+        private Button btnDestination;
+        @FXML
+        private SplitMenuButton btnAddSources;
 
         private MultiplexerInput input;
 
@@ -50,6 +59,15 @@ public class Multiplexer extends CustomAnchorPane
             tabInput.setContent(input);
             tabOutput.setContent(new NotImplemented("resources/stubs/Output.png"));
             tabAttachment.setContent(new NotImplemented("resources/stubs/Attachment.png"));
+            btnDestination.setOnAction(e ->
+            {
+                txtDestination.setText((new FileChooser()).showOpenDialog(((Stage)getScene().getWindow())).getName());
+            });
+
+            btnAddSources.setOnAction(e ->
+            {
+                addEntry((new FileChooser()).showOpenDialog(((Stage)getScene().getWindow())).getName());
+            });
         }
 
 
@@ -86,30 +104,35 @@ public class Multiplexer extends CustomAnchorPane
             }
 
             if (db.hasFiles())
-            {
-                String ext = Utils.getFileExtension(db.getFiles().get(0).getAbsolutePath());
-                ext = ext.toLowerCase();
-                switch (ext)
-                {
-                    case "mkv":
-                    case "mp4":
-                    case "webm":
-                    case "flv":
-                    case "avi":
-                    case "mov":
-                        input.addRandomVideo(ext);
-                        break;
-                    case "mp3":
-                    case "ogg":
-                    case "flac":
-                    case "wav":
-                        input.addRandomAudio(ext);
-                        break;
-                }
-            }
+                addEntry(db.getFiles().get(0).getAbsolutePath());
 
             e.setDropCompleted(success);
             e.consume();
+        }
+
+
+        private void addEntry(String path)
+        {
+
+            String ext = Utils.getFileExtension(path);
+            ext = ext.toLowerCase();
+            switch (ext)
+            {
+                case "mkv":
+                case "mp4":
+                case "webm":
+                case "flv":
+                case "avi":
+                case "mov":
+                    input.addRandomVideo(ext);
+                    break;
+                case "mp3":
+                case "ogg":
+                case "flac":
+                case "wav":
+                    input.addRandomAudio(ext);
+                    break;
+            }
         }
     }
 
