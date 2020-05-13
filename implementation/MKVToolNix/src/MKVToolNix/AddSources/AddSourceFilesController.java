@@ -88,6 +88,7 @@ public class AddSourceFilesController implements Initializable
     private void handleBtnOK(ActionEvent e)
     {
         mJob.setOpenSources(!chkSkip.isSelected());
+        mJob.setOpenSourcesStatus(true);
         Utils.closeWindow(root);
     }
 
@@ -95,6 +96,7 @@ public class AddSourceFilesController implements Initializable
     @FXML
     private void handleBtnCancel(ActionEvent e)
     {
+        mJob.setOpenSourcesStatus(false);
         Utils.closeWindow(root);
     }
 }

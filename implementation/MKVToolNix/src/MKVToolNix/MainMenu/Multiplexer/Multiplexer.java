@@ -50,6 +50,7 @@ public class Multiplexer extends CustomAnchorPane
 
         private MultiplexerInput input;
         private Boolean openSources;
+        private Boolean openSourcesStatus;
 
 
         public MultiplexerJob()
@@ -71,12 +72,19 @@ public class Multiplexer extends CustomAnchorPane
             });
 
             openSources = true;
+            openSourcesStatus = true;
         }
 
 
         public void setOpenSources(Boolean openSources)
         {
             this.openSources = openSources;
+        }
+
+
+        public void setOpenSourcesStatus(Boolean openSourcesStatus)
+        {
+            this.openSourcesStatus = openSourcesStatus;
         }
 
 
@@ -113,7 +121,7 @@ public class Multiplexer extends CustomAnchorPane
                 s.showAndWait();
             }
 
-            if (db.hasFiles())
+            if (db.hasFiles() && openSourcesStatus)
                 addEntry(db.getFiles().get(0).getAbsolutePath());
 
             e.setDropCompleted(success);
