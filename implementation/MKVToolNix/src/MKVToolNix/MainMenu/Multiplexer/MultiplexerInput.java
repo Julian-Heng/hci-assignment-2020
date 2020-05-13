@@ -25,7 +25,9 @@ import javafx.fxml.FXML;
 import javafx.scene.control.TitledPane;
 import javafx.scene.control.TreeItem;
 import javafx.scene.control.TreeTableColumn;
+import javafx.scene.control.TreeTableColumn.CellDataFeatures;
 import javafx.scene.control.TreeTableView;
+import javafx.util.Callback;
 
 
 /**
@@ -93,20 +95,21 @@ public class MultiplexerInput extends CustomAnchorPane
         TreeItem<FileComponent> root = new TreeItem<>(new FileComponent(""));
         root.setExpanded(true);
 
-        colType.setCellValueFactory(p -> makeString(p.getValue().getValue().getType()));
-        colCodec.setCellValueFactory(p -> makeString(p.getValue().getValue().getCodec()));
-        colCopy.setCellValueFactory(p -> makeString(p.getValue().getValue().getCopy()));
-        colLang.setCellValueFactory(p -> makeString(p.getValue().getValue().getLanguage()));
-        colName.setCellValueFactory(p -> makeString(p.getValue().getValue().getName()));
-        colID.setCellValueFactory(p -> makeString(p.getValue().getValue().getID()));
-        colDefault.setCellValueFactory(p -> makeString(p.getValue().getValue().getDefaultTrackOutput()));
-        colForced.setCellValueFactory(p -> makeString(p.getValue().getValue().getForced()));
-        colCharSet.setCellValueFactory(p -> makeString(p.getValue().getValue().getCharSet()));
-        colProp.setCellValueFactory(p -> makeString(p.getValue().getValue().getProperties()));
-        colSourceFile.setCellValueFactory(p -> makeString(p.getValue().getValue().getSourceFile()));
-        colSourceDir.setCellValueFactory(p -> makeString(p.getValue().getValue().getSourceDir()));
-        colProgram.setCellValueFactory(p -> makeString(p.getValue().getValue().getProgram()));
-        colDelay.setCellValueFactory(p -> makeString(p.getValue().getValue().getDelay()));
+        Callback<CellDataFeatures<FileComponent, String>, FileComponent> getter = p -> p.getValue().getValue();
+        colType.setCellValueFactory(p -> makeString(getter.call(p).getType()));
+        colCodec.setCellValueFactory(p -> makeString(getter.call(p).getCodec()));
+        colCopy.setCellValueFactory(p -> makeString(getter.call(p).getCopy()));
+        colLang.setCellValueFactory(p -> makeString(getter.call(p).getLanguage()));
+        colName.setCellValueFactory(p -> makeString(getter.call(p).getName()));
+        colID.setCellValueFactory(p -> makeString(getter.call(p).getID()));
+        colDefault.setCellValueFactory(p -> makeString(getter.call(p).getDefaultTrackOutput()));
+        colForced.setCellValueFactory(p -> makeString(getter.call(p).getForced()));
+        colCharSet.setCellValueFactory(p -> makeString(getter.call(p).getCharSet()));
+        colProp.setCellValueFactory(p -> makeString(getter.call(p).getProperties()));
+        colSourceFile.setCellValueFactory(p -> makeString(getter.call(p).getSourceFile()));
+        colSourceDir.setCellValueFactory(p -> makeString(getter.call(p).getSourceDir()));
+        colProgram.setCellValueFactory(p -> makeString(getter.call(p).getProgram()));
+        colDelay.setCellValueFactory(p -> makeString(getter.call(p).getDelay()));
 
         treeEntries.setRoot(root);
         treeEntries.setShowRoot(false);
