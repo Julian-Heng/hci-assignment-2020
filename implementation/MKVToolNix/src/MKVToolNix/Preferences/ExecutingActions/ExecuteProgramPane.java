@@ -7,7 +7,11 @@ package MKVToolNix.Preferences.ExecutingActions;
 
 import MKVToolNix.CustomAnchorPane;
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
+import javafx.scene.control.TextField;
+import javafx.stage.FileChooser;
+import javafx.stage.Stage;
 
 
 /**
@@ -18,6 +22,10 @@ public class ExecuteProgramPane extends CustomAnchorPane
 {
     @FXML
     private TextArea txtHelp;
+    @FXML
+    private TextField txtCommand;
+    @FXML
+    private Button btnAddCommand;
 
 
     public ExecuteProgramPane()
@@ -35,5 +43,10 @@ public class ExecuteProgramPane extends CustomAnchorPane
         txtHelp.appendText("  - Shut down the system in one minute:  /usr/bin/sudo /sbin/shutdown --poweroff +1\n");
         txtHelp.appendText("  - Open the multiplexed file with a player:\n");
         txtHelp.appendText("        /usr/bin/vlc '<MTX_DESTINATION_FILE_NAME>'");
+
+        btnAddCommand.setOnAction(e ->
+        {
+            txtCommand.setText((new FileChooser()).showOpenDialog(((Stage)getScene().getWindow())).getName());
+        });
     }
 }
