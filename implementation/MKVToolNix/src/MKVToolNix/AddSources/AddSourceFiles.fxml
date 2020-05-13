@@ -15,7 +15,7 @@
     <Line endX="212.5" layoutX="115.0" layoutY="42.0" startX="-100.0" AnchorPane.leftAnchor="16.0" AnchorPane.rightAnchor="16.0" AnchorPane.topAnchor="40.0" />
     <Text layoutX="15.0" layoutY="65.0" strokeType="OUTSIDE" strokeWidth="0.0" text="What do you want to do with the files that you've dragged and dropped here" textAlignment="JUSTIFY" wrappingWidth="314.0" AnchorPane.leftAnchor="16.0" AnchorPane.rightAnchor="16.0" />
     <Text layoutX="16.0" layoutY="150.0" strokeType="OUTSIDE" strokeWidth="0.0" text="If you want to append or add them as additional parts you have to select which source file to append or add them to:" textAlignment="JUSTIFY" wrappingWidth="314.0" AnchorPane.leftAnchor="16.0" AnchorPane.rightAnchor="16.0" />
-    <CheckBox layoutX="16.0" layoutY="241.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="314.0" text="Always use the action selected above and don't ask again" wrapText="true" AnchorPane.bottomAnchor="56.0" AnchorPane.leftAnchor="16.0" AnchorPane.rightAnchor="16.0" />
+    <CheckBox fx:id="chkSkip" layoutX="16.0" layoutY="241.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="314.0" text="Always use the action selected above and don't ask again" wrapText="true" AnchorPane.bottomAnchor="56.0" AnchorPane.leftAnchor="16.0" AnchorPane.rightAnchor="16.0" />
     <ButtonBar layoutX="16.0" layoutY="281.0" prefHeight="40.0" prefWidth="346.0" AnchorPane.bottomAnchor="16.0" AnchorPane.leftAnchor="16.0" AnchorPane.rightAnchor="16.0">
       <buttons>
         <Button fx:id="btnOK" mnemonicParsing="false" onAction="#handleBtnOK" text="OK" />

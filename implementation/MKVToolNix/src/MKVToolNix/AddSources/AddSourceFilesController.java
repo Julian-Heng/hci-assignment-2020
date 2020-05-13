@@ -5,6 +5,7 @@
  */
 package MKVToolNix.AddSources;
 
+import MKVToolNix.MainMenu.Multiplexer.Multiplexer;
 import MKVToolNix.Utils;
 import java.net.URL;
 import java.util.List;
@@ -14,6 +15,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.CheckBox;
 import javafx.scene.control.MenuButton;
 import javafx.scene.control.MenuItem;
 import javafx.scene.layout.AnchorPane;
@@ -46,6 +48,10 @@ public class AddSourceFilesController implements Initializable
     private MenuItem menuAddAsPartsToExisting;
     @FXML
     private MenuButton menuFileList;
+    @FXML
+    private CheckBox chkSkip;
+
+    private Multiplexer.MultiplexerJob mJob;
 
 
     /**
@@ -65,6 +71,12 @@ public class AddSourceFilesController implements Initializable
     }
 
 
+    public void setMultiplexerJob(Multiplexer.MultiplexerJob mJob)
+    {
+        this.mJob = mJob;
+    }
+
+
     @FXML
     private void handleMenuOption(ActionEvent e)
     {
@@ -75,6 +87,7 @@ public class AddSourceFilesController implements Initializable
     @FXML
     private void handleBtnOK(ActionEvent e)
     {
+        mJob.setOpenSources(!chkSkip.isSelected());
         Utils.closeWindow(root);
     }
 

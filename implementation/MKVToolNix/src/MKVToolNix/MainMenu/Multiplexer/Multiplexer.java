@@ -49,6 +49,7 @@ public class Multiplexer extends CustomAnchorPane
         private SplitMenuButton btnAddSources;
 
         private MultiplexerInput input;
+        private Boolean openSources;
 
 
         public MultiplexerJob()
@@ -68,6 +69,14 @@ public class Multiplexer extends CustomAnchorPane
             {
                 addEntry((new FileChooser()).showOpenDialog(((Stage)getScene().getWindow())).getName());
             });
+
+            openSources = true;
+        }
+
+
+        public void setOpenSources(Boolean openSources)
+        {
+            this.openSources = openSources;
         }
 
 
@@ -86,7 +95,7 @@ public class Multiplexer extends CustomAnchorPane
             Dragboard db = e.getDragboard();
             Boolean success = false;
 
-            if (!input.hasNoEntries())
+            if (!input.hasNoEntries() && openSources)
             {
                 Stage s;
                 FXMLLoader loader;
@@ -97,6 +106,7 @@ public class Multiplexer extends CustomAnchorPane
                 p = loader.load();
                 c = loader.getController();
                 c.setJobs(tabJobs.getTabs().stream().map(Tab::getText).collect(Collectors.toList()));
+                c.setMultiplexerJob(this);
 
                 s = Utils.openWindow(p, "Adding or appending files", 346.0, 337.0);
                 s.setResizable(false);
